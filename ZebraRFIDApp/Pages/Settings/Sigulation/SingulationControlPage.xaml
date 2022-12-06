@@ -1,0 +1,87 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="ZebraRFIDApp.Pages.Settings.Sigulation.SingulationControlPage">
+   <ContentPage.Content>
+        <ContentView Padding="10,20,10,10" BackgroundColor="#E6E6E6" >
+               <Grid  Padding="10" RowSpacing="1" ColumnSpacing="10">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="50"/>
+                                    <RowDefinition Height="50"/>
+                                    <RowDefinition Height="50"/>
+                                    <RowDefinition Height="50"/>
+                                   
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="6*"/>
+                                    <ColumnDefinition Width="4*"/>
+                                   
+                                </Grid.ColumnDefinitions>
+
+                   <Label Grid.Column="0"
+                                       Grid.Row="0"
+                                       Text="Session"
+                                     
+                                       FontSize="15"
+                                       VerticalOptions="Center"/>
+                   <Picker FontSize="15" Title="Select" x:Name="sessionPicker" Grid.Column="1" Grid.Row="0" SelectedIndexChanged="OnSessionPickerChanged" HorizontalOptions="FillAndExpand">
+                   <Picker.Items>
+                       <x:String>S0</x:String> 
+                       <x:String>S1</x:String>
+                       <x:String>S2</x:String>
+                       <x:String>S3</x:String>
+          
+                   </Picker.Items>
+                   </Picker>
+                        <Label Grid.Column="0"
+                                       Grid.Row="1"
+                                       Text="Tag Population"
+                                       VerticalOptions="Center"
+                                       FontSize="15"
+                                       />
+
+                    <Picker FontSize="15" VerticalOptions="Center" Title="Select" x:Name="tagPopulationPicker" Grid.Column="1" Grid.Row="1" SelectedIndexChanged="OnSessionPickerChanged" HorizontalOptions="FillAndExpand">
+                   <Picker.Items>
+                       <x:String>0</x:String>
+                       <x:String>30</x:String> 
+                       <x:String>100</x:String>
+                       <x:String>200</x:String>
+                       <x:String>300</x:String>
+                       <x:String>400</x:String>
+                       <x:String>500</x:String>
+                       <x:String>600</x:String>
+          
+                   </Picker.Items>
+                   </Picker>
+                    <Label Grid.Column="0"
+                                       Grid.Row="2"
+                                       Text="Inventory State"
+                                       VerticalOptions="Center"
+                                       FontSize="15"
+                                      />
+                   <Picker FontSize="15" Title="Select" x:Name="inventoryStatePicker" Grid.Column="1" Grid.Row="2" SelectedIndexChanged="OnSessionPickerChanged" HorizontalOptions="FillAndExpand">
+                   <Picker.Items>
+                       <x:String>STATE A</x:String> 
+                       <x:String>STATE B</x:String>
+                       <x:String>AB FLIP</x:String>
+                      
+          
+                   </Picker.Items>
+                   </Picker>
+                   <Label Grid.Column="0"
+                                       Grid.Row="3"
+                                       Text="SL Flag"
+                                       VerticalOptions="Center"
+                                       FontSize="15"
+                                      />
+                   <Picker FontSize="15" Title="Select" x:Name="slFlagPicker" Grid.Column="1" Grid.Row="3" SelectedIndexChanged="OnSessionPickerChanged" HorizontalOptions="FillAndExpand">
+                   <Picker.Items>
+                       <x:String>ALL</x:String> 
+                       <x:String>DEASSERTED</x:String>
+                       <x:String>ASSERTED</x:String>
+                      
+          
+                   </Picker.Items>
+                   </Picker>
+                   </Grid>
+        </ContentView>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="ZebraRFIDApp.Pages.About.AboutPage">
+     <ContentPage.Content>
+        <StackLayout Padding="0,20,10,0">
+          <Label x:Name="lbAppVersion" Text="Zebra RFID Application"  XAlign="Center"  FontSize = "15"  LineBreakMode="WordWrap"
+         MaxLines="2" />
+            <Label x:Name = "lbSdkVersion"   XAlign="Center"  FontSize = "15" Text="Zebra Technologies"  LineBreakMode="WordWrap"
+         MaxLines="2" />
+             <Label x:Name="lbCopyright"  XAlign="Center"  FontSize = "15" Text="Copy Right"  LineBreakMode="WordWrap"
+         MaxLines="40" />
+            
+       </StackLayout>
+       
+        
+    </ContentPage.Content>
+</ContentPage>

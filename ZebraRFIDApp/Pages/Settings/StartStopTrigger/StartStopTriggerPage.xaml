@@ -1,0 +1,121 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="ZebraRFIDApp.Pages.Settings.StartStopTrigger.StartStopTriggerPage">
+   <ContentPage.Content>
+        <StackLayout BackgroundColor="#E6E6E6">
+            <ContentView Padding="10,20,10,10" BackgroundColor="#E6E6E6" >
+                <Label   XAlign="Start" TextColor="#8c8c8c"  FontSize = "15"
+                         Text="START"  LineBreakMode="WordWrap"
+                        MaxLines="10" />
+            </ContentView>
+
+            <Grid RowSpacing="0" ColumnSpacing="0" BackgroundColor="White">
+                <Grid.RowDefinitions>
+                   
+                    <RowDefinition Height="Auto" />
+            
+
+                </Grid.RowDefinitions>
+
+                <Grid.ColumnDefinitions>
+                   <ColumnDefinition Width="6*" />
+                   <ColumnDefinition Width="3*" />
+                     <ColumnDefinition Width="1*" />
+                </Grid.ColumnDefinitions>
+
+                <Label Text="     Start Trigger"  VerticalTextAlignment="Center" BackgroundColor="White" Grid.Row="0" Grid.Column="0" />
+              
+                   <Picker FontSize="Small" Title="Select" x:Name="startPicker" Grid.Column="1" Grid.Row="0" SelectedIndexChanged="OnStartTriggerPickerChanged" HorizontalOptions="FillAndExpand">
+                   <Picker.Items>
+                       <x:String>Immediate</x:String> 
+                       <x:String>Handheld</x:String>
+                       <x:String>Periodic</x:String>
+                      
+                   </Picker.Items>
+                   </Picker>
+                 <Label x:Name="lbPerodic" Text="     Period (ms)" IsVisible="False" VerticalTextAlignment="Center" BackgroundColor="White" Grid.Column="0"  Grid.Row="1" />
+        
+                <Label x:Name="lbTriggerReleased" Text="     Trigger Pressed/Released" IsVisible="False" VerticalTextAlignment="Center" BackgroundColor="White" Grid.Column="0"  Grid.Row="1" />
+                  <Picker FontSize="Small" Title="Select" x:Name="startPressedReleasedPicker" Grid.Column="1" Grid.Row="1" SelectedIndexChanged="OnStartPressedReleasedPickerChanged" HorizontalOptions="FillAndExpand">
+                   <Picker.Items>
+                       <x:String>Press</x:String> 
+                       <x:String>Release</x:String>
+
+                      
+                   </Picker.Items>
+                   </Picker>
+                    <Entry x:Name="txtPerodic" FontSize="Small"  HorizontalOptions="FillAndExpand" IsVisible="False"  VerticalOptions="Center" Grid.Row="1" Grid.Column="1" ></Entry>
+                  <Label x:Name="lbRow" Text=""  VerticalTextAlignment="Center" IsVisible="False" BackgroundColor="White" Grid.Column="0"  Grid.Row="3" />
+                 
+            </Grid>
+
+            <ContentView Padding="10,20,10,10" BackgroundColor="#E6E6E6" >
+                <Label   XAlign="Start" TextColor="#8c8c8c"  FontSize = "15"
+                         Text="STOP"  LineBreakMode="WordWrap"
+                        MaxLines="10" />
+            </ContentView>
+
+            <Grid RowSpacing="0" ColumnSpacing="0" BackgroundColor="White">
+                <Grid.RowDefinitions>
+                   
+                    <RowDefinition Height="Auto" />
+            
+
+                </Grid.RowDefinitions>
+
+                <Grid.ColumnDefinitions>
+                   <ColumnDefinition Width="6*" />
+                   <ColumnDefinition Width="3*" />
+                     <ColumnDefinition Width="1*" />
+                </Grid.ColumnDefinitions>
+
+                <Label Text="     Stop Trigger"  VerticalTextAlignment="Center" BackgroundColor="White" Grid.Row="0" Grid.Column="0" />
+              
+                   <Picker FontSize="Small" Title="Select" x:Name="stopPicker" Grid.Column="1" Grid.Row="0" SelectedIndexChanged="OnStopTriggerPickerChanged" HorizontalOptions="FillAndExpand">
+                   <Picker.Items>
+                       <x:String>Immediate</x:String> 
+                       <x:String>Handheld</x:String>
+                       <x:String>Duration</x:String>
+                       <x:String>Tag Observation</x:String>
+                       <x:String>N attempts</x:String>
+                      
+                   </Picker.Items>
+                   </Picker>
+                 <Label x:Name="lbStopDuration" Text="     Duration(ms)"  VerticalTextAlignment="Center" BackgroundColor="White" Grid.Column="0"  Grid.Row="1" />
+              
+                <Entry x:Name="txtStopDuration" FontSize="Small"  HorizontalOptions="FillAndExpand"   VerticalOptions="Center" Grid.Row="1" Grid.Column="1" ></Entry>
+
+                <Label x:Name="lbStopNAttempts" Text="     No. of Attempts"  VerticalTextAlignment="Center" BackgroundColor="White" Grid.Column="0"  Grid.Row="1" />
+              
+                <Entry x:Name="txtStopNAttempts" FontSize="Small"  HorizontalOptions="FillAndExpand"   VerticalOptions="Center" Grid.Row="1" Grid.Column="1" ></Entry>
+               
+                <Label x:Name="lbStopNAttemptsTimeout" Text="     Timeout(ms)"  VerticalTextAlignment="Center" BackgroundColor="White" Grid.Column="0"  Grid.Row="2" />
+              
+                <Entry x:Name="txtStopNAttemptsTimeout" FontSize="Small"  HorizontalOptions="FillAndExpand"   VerticalOptions="Center" Grid.Row="2" Grid.Column="1" ></Entry>
+               
+                <Label x:Name="lbStopTagObservation" Text="     Tag Observation"  VerticalTextAlignment="Center" BackgroundColor="White" Grid.Column="0"  Grid.Row="1" />
+              
+                <Entry x:Name="txtStopTagObservation" FontSize="Small"  HorizontalOptions="FillAndExpand"   VerticalOptions="Center" Grid.Row="1" Grid.Column="1" ></Entry>
+
+
+
+                <Label x:Name="lbStopTriggerReleased" Text="     Trigger Pressed/Released"  VerticalTextAlignment="Center" BackgroundColor="White" Grid.Column="0"  Grid.Row="1" />
+               <Label x:Name="lbObservationTimeOut" Text="     Timeout (ms)"  VerticalTextAlignment="Center"  BackgroundColor="White" Grid.Column="0"  Grid.Row="2" />
+                <Entry x:Name="txtObservationTimeout" FontSize="Small"  HorizontalOptions="FillAndExpand"   VerticalOptions="Center" Grid.Row="2" Grid.Column="1" ></Entry>
+
+
+                <Picker FontSize="Small" Title="Select" x:Name="stopPressedReleasedPicker" Grid.Column="1" Grid.Row="1" SelectedIndexChanged="OnStopPressedReleasedPickerChanged" HorizontalOptions="FillAndExpand">
+                   <Picker.Items>
+                       <x:String>Press</x:String> 
+                       <x:String>Release</x:String>
+
+                      
+                   </Picker.Items>
+                   </Picker>
+                
+                <Label x:Name="lbTimeOut" Text="     Timeout (ms)"  VerticalTextAlignment="Center"  BackgroundColor="White" Grid.Column="0"  Grid.Row="2" />
+                <Entry x:Name="txtTimeout" FontSize="Small"  HorizontalOptions="FillAndExpand"   VerticalOptions="Center" Grid.Row="2" Grid.Column="1" ></Entry>
+                
+            </Grid>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

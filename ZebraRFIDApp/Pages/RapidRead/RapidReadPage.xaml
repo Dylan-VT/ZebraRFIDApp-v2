@@ -1,0 +1,105 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="ZebraRFIDApp.Pages.RapidRead.RapidReadPage">
+   <ContentPage.Content>
+      <StackLayout>
+
+         <!--Section 01 total tag read-->
+         <Grid HorizontalOptions="FillAndExpand">
+
+            <Grid.RowDefinitions>
+               <RowDefinition Height="40" />
+               <RowDefinition Height="60" />
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+               <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <Label Grid.Column="0" Grid.Row="0" VerticalOptions="End" x:Name="lableTotalReadTagTitle" Text="TOTAL READS" TextColor="Black" FontSize="15" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" />
+            <Label Grid.Column="0" Grid.Row="1" VerticalOptions="End" x:Name="lableTotalReadTag" Text="0" TextColor="Black" FontSize="36" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" />
+
+         </Grid>
+
+         <!--Section 02 separator-->
+         <Grid HorizontalOptions="FillAndExpand">
+            <Grid.RowDefinitions>
+               <RowDefinition Height="2" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+               <ColumnDefinition Width="*" />
+               <ColumnDefinition Width="80" />
+               <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <BoxView Grid.Column="1" Grid.Row="0" VerticalOptions="End" BackgroundColor="LightGray" WidthRequest="2" x:Name="lbTotalbUniqeTag" />
+         </Grid>
+         <!--Section 03 Uniqe tag title -->
+         <Grid HorizontalOptions="FillAndExpand">
+            <Grid.RowDefinitions>
+               <RowDefinition Height="40" />
+               <RowDefinition Height="60" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+               <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Label Grid.Column="0" Grid.Row="0" VerticalOptions="End" x:Name="lableTotalUniqeReadTitle" Text="UNIQUE TAG" TextColor="Black" FontSize="15" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" />
+            <Label Grid.Column="0" Grid.Row="1" VerticalOptions="End" x:Name="lableTotalUniqueTag" Text="0" TextColor="Black" FontSize="36" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" />
+         </Grid>
+         <!--Section 04 read speed title -->
+         <Grid HorizontalOptions="FillAndExpand">
+            <Grid.RowDefinitions>
+               <RowDefinition Height="60" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+               <ColumnDefinition Width="49*" />
+               <ColumnDefinition Width="*" />
+               <ColumnDefinition Width="49*" />
+            </Grid.ColumnDefinitions>
+            <Label Grid.Column="0" Grid.Row="0" Text="READ RATE" VerticalOptions="End" TextColor="Black" FontSize="15" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" />
+            <Label Grid.Column="2" Grid.Row="0" Text="READ TIME" VerticalOptions="End" TextColor="Black" FontSize="15" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" />
+         </Grid>
+
+         <!--Section 05 read speed value -->
+         <Grid HorizontalOptions="FillAndExpand">
+            <Grid.RowDefinitions>
+               <RowDefinition Height="25" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+               <ColumnDefinition Width="*" />
+               <ColumnDefinition Width="2" />
+               <ColumnDefinition Width=" *" />
+            </Grid.ColumnDefinitions>
+            <Label Grid.Column="0" Grid.Row="0" Text="0" x:Name="lableReadRate" VerticalOptions="Start" TextColor="Black" FontSize="22" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" />
+            <BoxView Grid.Column="1" Grid.Row="0"  VerticalOptions="Start" BackgroundColor="LightGray"  WidthRequest="2"  HorizontalOptions="Center" />
+            <Label Grid.Column="2" Grid.Row="0" Text="00:00" x:Name="lableReadTime" VerticalOptions="Start" TextColor="Black" FontSize="22" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" />
+         </Grid>
+
+          <!--Section 06 tag second  -->
+         <Grid HorizontalOptions="FillAndExpand">
+            <Grid.RowDefinitions>
+               <RowDefinition Height="30" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+               <ColumnDefinition Width="*" />
+               <ColumnDefinition Width="2" />
+               <ColumnDefinition Width=" *" />
+            </Grid.ColumnDefinitions>
+            <Label Grid.Column="0" Grid.Row="0" Text="tag/second" VerticalOptions="Start" TextColor="Black" FontSize="12" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" />
+            <Label Grid.Column="1" Grid.Row="0" Text="" VerticalOptions="Start"  TextColor="Black" WidthRequest="2" FontSize="13" HorizontalOptions="Center" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" />
+            <Label Grid.Column="2" Grid.Row="0" Text="" VerticalOptions="Start" TextColor="Black" FontSize="15" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" />
+         </Grid>
+
+         <!--Section 07 start button -->
+         <Grid HorizontalOptions="FillAndExpand">
+            <Grid.RowDefinitions>
+               <RowDefinition Height="60" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+               <ColumnDefinition Width="*" />
+               <ColumnDefinition Width="80" />
+               <ColumnDefinition Width=" *" />
+            </Grid.ColumnDefinitions>
+            <ImageButton Grid.Column="1" BackgroundColor="#00ffffff" Grid.Row="0" x:Name="rapidReadStartButton" Clicked="OnButtonClickedStartRapidRead" WidthRequest="40" HeightRequest="40" CornerRadius="20" Source="startImage.png" />
+         </Grid>
+      </StackLayout>
+   </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,386 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ZebraRFIDApp.Pages.Access.AccessPage">
+    <ContentPage.Content>
+    <StackLayout>
+
+         <!--Section 01 total tag read-->
+         <Grid HorizontalOptions="FillAndExpand" ColumnSpacing="0">
+
+            <Grid.RowDefinitions>
+               <RowDefinition Height="50" />
+         
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+               <ColumnDefinition Width="2*" />
+               <ColumnDefinition Width="32*" />
+               <ColumnDefinition Width="32*" />
+               <ColumnDefinition Width="32*" />
+               <ColumnDefinition Width="2*" />
+            </Grid.ColumnDefinitions>
+
+            <Button Grid.Column="1"
+                    Grid.Row="0"
+                    VerticalOptions="End"
+                    x:Name="buttonReadAndWrite"
+                    Text="Read / Write"
+                    TextColor="White"
+                    FontSize="Small"
+                    Clicked="OnButtonClickedReadWrite"
+                    BorderWidth="1" 
+                    BorderRadius="1" 
+                    BorderColor="CornflowerBlue"
+                    BackgroundColor="CornflowerBlue"
+                    HeightRequest="40"/>
+             <Button Grid.Column="2"
+                    Grid.Row="0"
+                    VerticalOptions="End"
+                    x:Name="buttonLock"
+                    Text="Lock"
+                    TextColor="CornflowerBlue"
+                    FontSize="Small"
+                    Clicked="OnButtonClickedLock"
+                    BorderWidth="1" 
+                    BorderRadius="1" 
+                    BorderColor="CornflowerBlue"
+                    BackgroundColor="White"
+                    HeightRequest="40"/>
+             <Button Grid.Column="3"
+                    Grid.Row="0"
+                    VerticalOptions="End"
+                    x:Name="buttonKill"
+                    Text="Kill"
+                    TextColor="CornflowerBlue"
+                    FontSize="Small"
+                    Clicked="OnButtonClickedKill"
+                    BorderWidth="1" 
+                    BorderRadius="1" 
+                    BorderColor="CornflowerBlue"
+                    BackgroundColor="White"
+                    HeightRequest="40"/>
+
+         </Grid>
+        <!--Section 02 tag id -->
+         <Grid HorizontalOptions="FillAndExpand">
+
+            <Grid.RowDefinitions>
+               <RowDefinition Height="50" />
+         
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+               <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+             <Entry x:Name="txtTagID"
+                    HorizontalOptions="FillAndExpand"
+                    Grid.Column="0"
+                    Grid.Row="0"
+                    FontSize="17"
+                    Placeholder="Tag Pattern"/>
+
+         </Grid>
+
+        <!--Section 03 password -->
+         <Grid HorizontalOptions="FillAndExpand">
+
+            <Grid.RowDefinitions>
+               <RowDefinition Height="40" />
+         
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+               <ColumnDefinition Width="1*" />
+               <ColumnDefinition Width="55*" />
+               <ColumnDefinition Width="43*" />
+               <ColumnDefinition Width="1*" />
+            </Grid.ColumnDefinitions>
+             <Label Grid.Row="0"
+                    Grid.Column="1"
+                    x:Name="labelPassword"
+                    XAlign="Start"
+                    FontSize = "15"
+                    Text="Password"
+                    LineBreakMode="WordWrap"
+                    MaxLines="1"
+                    VerticalOptions="Center"/>
+             <Entry Grid.Column="2"
+                    Grid.Row="0"
+                    x:Name="txtPassword"
+                    HorizontalOptions="FillAndExpand"
+                    Placeholder="00"
+                    Text="00"
+                    FontSize="14"
+                    VerticalOptions="Center"/>
+
+         </Grid>
+        <!--Section 04 Memorybank -->
+         <Grid HorizontalOptions="FillAndExpand">
+
+            <Grid.RowDefinitions>
+               <RowDefinition Height="40" />
+         
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+               <ColumnDefinition Width="1*" />
+               <ColumnDefinition Width="55*" />
+               <ColumnDefinition Width="43*" />
+               <ColumnDefinition Width="1*" />
+            </Grid.ColumnDefinitions>
+             <Label Grid.Row="0"
+                    Grid.Column="1"
+                    x:Name="labelMemoryBank"
+                    XAlign="Start"
+                    FontSize = "15"
+                    Text="Memory Bank"
+                    LineBreakMode="WordWrap"
+                    MaxLines="1"
+                    VerticalOptions="Center"/>
+             
+             <Picker Grid.Column="2"
+                     Grid.Row="0"
+                     FontSize="14"
+                     Title="EPC"
+                     x:Name="memoryBankPicker" 
+                     SelectedIndexChanged="OnMemoryBankPickerChanged"
+                     HorizontalOptions="FillAndExpand">
+                   <Picker.Items>
+                       <x:String>EPC</x:String> 
+                       <x:String>RESERVED</x:String>
+                       <x:String>TID</x:String>
+                       <x:String>USER</x:String>
+          
+                   </Picker.Items>
+                 </Picker>
+             <Picker Grid.Column="2"
+                     Grid.Row="0"
+                     FontSize="14"
+                     Title="EPC"
+                     x:Name="memoryBankLockPicker" 
+                     SelectedIndexChanged="OnMemoryBankLockPickerChanged"
+                     HorizontalOptions="FillAndExpand">
+                   <Picker.Items>
+                       <x:String>EPC</x:String> 
+                       <x:String>ACCESS PASSWORD</x:String>
+                       <x:String>KILL PASSWORD</x:String>
+                       <x:String>TID</x:String>
+                       <x:String>USER</x:String>
+          
+                   </Picker.Items>
+                 </Picker>
+         </Grid>
+        <!--Section 05 Offset -->
+         <Grid HorizontalOptions="FillAndExpand">
+
+            <Grid.RowDefinitions>
+               <RowDefinition Height="40" />
+         
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+               <ColumnDefinition Width="1*" />
+               <ColumnDefinition Width="55*" />
+               <ColumnDefinition Width="43*" />
+               <ColumnDefinition Width="1*" />
+            </Grid.ColumnDefinitions>
+             <Label Grid.Row="0"
+                    Grid.Column="1"
+                    x:Name="labelOffset"
+                    XAlign="Start"
+                    FontSize = "15"
+                    Text="Offset"
+                    LineBreakMode="WordWrap"
+                    MaxLines="1"
+                    VerticalOptions="Center"/>
+             <Entry Grid.Column="2"
+                    Grid.Row="0"
+                    x:Name="entryOffset"
+                    HorizontalOptions="FillAndExpand"
+                    Placeholder="0"
+                    Text="0"
+                    FontSize="14"
+                    VerticalOptions="Center"/>
+             <Picker Grid.Column="2"
+                     Grid.Row="0"
+                     FontSize="14"
+                     Title="Read and Write"
+                     x:Name="offSetPicker" 
+                     SelectedIndexChanged="OnOffSetPickerChanged"
+                     HorizontalOptions="FillAndExpand" IsVisible="false">
+                   <Picker.Items>
+                       <x:String>Read and Write</x:String> 
+                       <x:String>Permanent Lock</x:String>
+                       <x:String>Permanent Unlock</x:String>
+                       <x:String>Unlock</x:String>
+          
+                   </Picker.Items>
+                 </Picker>
+
+         </Grid>
+        <!--Section 06 Length -->
+         <Grid HorizontalOptions="FillAndExpand">
+
+            <Grid.RowDefinitions>
+               <RowDefinition Height="40" />
+         
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+               <ColumnDefinition Width="1*" />
+               <ColumnDefinition Width="55*" />
+               <ColumnDefinition Width="43*" />
+               <ColumnDefinition Width="1*" />
+            </Grid.ColumnDefinitions>
+             <Label Grid.Row="0"
+                    Grid.Column="1"
+                    x:Name="labelLength"
+                    XAlign="Start"
+                    FontSize = "15"
+                    Text="Length"
+                    LineBreakMode="WordWrap"
+                    MaxLines="1"
+                    VerticalOptions="Center"/>
+             <Entry Grid.Column="2"
+                    Grid.Row="0"
+                    x:Name="entryLength"
+                    HorizontalOptions="FillAndExpand"
+                    Placeholder="0"
+                    Text="0"
+                    FontSize="14"
+                    VerticalOptions="Center"/>
+
+         </Grid>
+        <!--Section 07 Data -->
+         <Grid HorizontalOptions="FillAndExpand">
+
+            <Grid.RowDefinitions>
+               <RowDefinition Height="40" />
+         
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+               <ColumnDefinition Width="1*" />
+               <ColumnDefinition Width="99*" />
+             
+            </Grid.ColumnDefinitions>
+             <Label Grid.Row="0"
+                    Grid.Column="1"
+                    x:Name="labelData"
+                    XAlign="Start"
+                    FontSize = "15"
+                    Text="Data"
+                    LineBreakMode="WordWrap"
+                    MaxLines="1"
+                    VerticalOptions="Center"/>
+             
+         </Grid>
+        <!--Section 08 Data TextView -->
+         <Grid HorizontalOptions="FillAndExpand">
+
+            <Grid.RowDefinitions>
+               <RowDefinition Height="45" />
+         
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+               <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="98*" />
+                <ColumnDefinition Width="1*" />
+             
+            </Grid.ColumnDefinitions>
+             <Entry Grid.Column="1"
+                    Grid.Row="0"
+                    x:Name="entryData"
+                    HorizontalOptions="FillAndExpand"
+                    Placeholder=""
+                    Text=""
+                    FontSize="17"
+                    VerticalOptions="Center" Keyboard="Plain"/>
+         </Grid>
+
+        <StackLayout Orientation="Horizontal" VerticalOptions="End">
+            <!-- bottom controls -->
+          <!--Section 09 Btn Lock and Kill -->
+         <Grid HorizontalOptions="FillAndExpand" x:Name="gridViewReadAndWrite">
+
+            <Grid.RowDefinitions>
+               <RowDefinition Height="40" />
+         
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+               <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="49*" />
+                <ColumnDefinition Width="49*" />
+                <ColumnDefinition Width="1*" />
+             
+            </Grid.ColumnDefinitions>
+             <Button
+                        Grid.Column="1"
+                        Grid.Row="0"
+                        x:Name = "btnRead"
+                        BackgroundColor="CornflowerBlue"
+                        FontAttributes="Bold"
+                        FontSize="18"
+                        Text="READ"
+                        TextColor="White"                
+                        HorizontalOptions="CenterAndExpand"
+                        VerticalOptions="Center"
+                        Clicked="OnButtonClickTagRead"
+                        WidthRequest="150"/>
+
+             <Button
+                        Grid.Column="2"
+                        Grid.Row="0"
+                        x:Name = "btnWrite"
+                        BackgroundColor="CornflowerBlue"
+                        FontAttributes="Bold"
+                        FontSize="18"
+                        Text="WRITE"
+                        TextColor="White"                
+                        HorizontalOptions="CenterAndExpand"
+                        VerticalOptions="Center"
+                        Clicked="OnButtonClickTagWrite"
+                        WidthRequest="150"/>
+             
+         </Grid>
+
+            <!--Section 09 Btn Lock and Kill -->
+         <Grid HorizontalOptions="FillAndExpand" x:Name="gridViewLockAndKill" IsVisible="false">
+
+            <Grid.RowDefinitions>
+               <RowDefinition Height="40" />
+
+         
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+               <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="98*" />
+                <ColumnDefinition Width="1*" />
+             
+            </Grid.ColumnDefinitions>
+             <Button
+                        Grid.Column="1"
+                        Grid.Row="0"
+                        x:Name = "buttonLockAndKill"
+                        BackgroundColor="CornflowerBlue"
+                        FontAttributes="Bold"
+                        FontSize="18"
+                        Text="LOCK"
+                        TextColor="White"                
+                        HorizontalOptions="CenterAndExpand"
+                        VerticalOptions="Center"
+                        Clicked="OnButtonClickTagLockAndKill"
+                        WidthRequest="300"/>
+             
+         </Grid>
+        </StackLayout>
+
+        </StackLayout>
+
+        </ContentPage.Content>
+</ContentPage>

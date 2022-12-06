@@ -1,0 +1,99 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="ZebraRFIDApp.Pages.Settings.TagReporting.TagReportingPage">
+   <ContentPage.Content>
+        <StackLayout>
+         <ContentView Padding="10,20,10,10" BackgroundColor="#E6E6E6" >
+                <Label   XAlign="Start" TextColor="#8c8c8c"  FontSize = "15"
+                         Text="Tag Report Settings"  LineBreakMode="WordWrap"
+                        MaxLines="10" />
+            </ContentView>
+         <Grid RowSpacing="2" ColumnSpacing="0" BackgroundColor="White">
+                <Grid.RowDefinitions>
+                   
+                    <RowDefinition Height="40" />
+                    <RowDefinition Height="40" />
+                    <RowDefinition Height="40" />
+                    <RowDefinition Height="40" />
+                    <RowDefinition Height="40" />
+
+                </Grid.RowDefinitions>
+
+                <Grid.ColumnDefinitions>
+                   <ColumnDefinition Width="8*" />
+                   <ColumnDefinition Width="2*" />
+                </Grid.ColumnDefinitions>
+
+                 <Label Text="  PC"  VerticalTextAlignment="Center" BackgroundColor="White" Grid.Column="0"  Grid.Row="0" />
+                 
+                 <Switch x:Name="switchPC" Toggled="SwitchToggledPC" VerticalOptions="Center" BackgroundColor="White" Grid.Row="0" Grid.Column="1" />
+                
+                 <Label Text="  RSSI"  VerticalTextAlignment="Center" BackgroundColor="White" Grid.Column="0"  Grid.Row="1" />
+                 <Switch x:Name="switchRSSI" Toggled="SwitchToggledRSSI" VerticalOptions="Center" HeightRequest="40" BackgroundColor="White" Grid.Row="1" Grid.Column="1" />
+
+                 <Label Text="  Phase"  VerticalTextAlignment="Center" BackgroundColor="White" Grid.Column="0"  Grid.Row="2" />
+                 <Switch x:Name="swichPhase" Toggled="SwitchToggledPhase" VerticalOptions="Center" BackgroundColor="White" Grid.Row="2" Grid.Column="1" />
+
+             
+                 <Label Text="  Channel Index"  VerticalTextAlignment="Center" BackgroundColor="White" Grid.Column="0"  Grid.Row="3" />
+                 <Switch x:Name="swichChannelIndex" Toggled="SwitchToggledChannelIndex" VerticalOptions="Center" BackgroundColor="White" Grid.Row="3" Grid.Column="1" />
+
+                 <Label Text="  Tag Seen Count"  VerticalTextAlignment="Center" BackgroundColor="White" Grid.Row="4" Grid.Column="0" />
+                 <Switch x:Name="swichTagSeenCount" Toggled="SwitchToggledTagSeenCount" VerticalOptions="Center" BackgroundColor="White" Grid.Row="4" Grid.Column="1" />
+
+            </Grid>
+
+             <ContentView Padding="10,20,10,10" BackgroundColor="#E6E6E6" >
+                <Label   XAlign="Start" TextColor="#8c8c8c"  FontSize = "15"
+                         Text="Batch Mode Settings"  LineBreakMode="WordWrap"
+                        MaxLines="10" />
+            </ContentView>
+
+             <Grid RowSpacing="2" ColumnSpacing="0" BackgroundColor="White">
+                <Grid.RowDefinitions>
+                   
+                    <RowDefinition Height="40" />
+                
+
+                </Grid.RowDefinitions>
+
+                <Grid.ColumnDefinitions>
+                   <ColumnDefinition Width="8*" />
+                   <ColumnDefinition Width="2*" />
+                </Grid.ColumnDefinitions>
+
+                <Label Text="  Batchmode"  VerticalTextAlignment="Center" BackgroundColor="White" Grid.Row="0" Grid.Column="0" />
+              
+                   <Picker FontSize="Small" Title="Select" x:Name="batchModePicker" Grid.Column="1" Grid.Row="0" SelectedIndexChanged="OnBatchModePickerChanged" HorizontalOptions="FillAndExpand">
+                   <Picker.Items>
+                       <x:String>Disable</x:String> 
+                       <x:String>Auto</x:String>
+                       <x:String>Enable</x:String>
+                      
+                   </Picker.Items>
+                   </Picker>
+            </Grid>
+
+            <ContentView Padding="10,20,10,10" BackgroundColor="#E6E6E6" >
+                <Label   XAlign="Start" TextColor="#8c8c8c"  FontSize = "15"
+                         Text="Unique Tag Settings"  LineBreakMode="WordWrap"
+                        MaxLines="10" />
+            </ContentView>
+             <Grid RowSpacing="2" ColumnSpacing="0" BackgroundColor="White">
+                <Grid.RowDefinitions>                   
+                   <RowDefinition Height="40" />
+                </Grid.RowDefinitions>
+
+                <Grid.ColumnDefinitions>
+                   <ColumnDefinition Width="8*" />
+                   <ColumnDefinition Width="2*" />
+                </Grid.ColumnDefinitions>
+
+               <Label Text="  Report Unique tags"  VerticalTextAlignment="Center" BackgroundColor="White" Grid.Column="0"  Grid.Row="0" />
+                 
+                 <Switch x:Name="switchUniqueTag" Toggled="SwitchToggledUniqueTag" VerticalOptions="Center" BackgroundColor="White" Grid.Row="0" Grid.Column="1" />
+                
+            </Grid>
+            
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

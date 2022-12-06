@@ -1,0 +1,103 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="ZebraRFIDApp.Pages.Settings.Antenna.AntennaPage">
+    <ContentPage.Content>
+
+        <StackLayout BackgroundColor="#E6E6E6">
+            <ContentView Padding="10,20,0,0" BackgroundColor="#E6E6E6" >
+                <Grid  Padding="10" RowSpacing="1" ColumnSpacing="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="50"/>
+
+
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="5*"/>
+                        <ColumnDefinition Width="5*"/>
+
+
+                    </Grid.ColumnDefinitions>
+
+
+                    <Label Text="Power level(dbm)"  VerticalTextAlignment="Center" BackgroundColor="#E6E6E6" Grid.Row="0" Grid.Column="0" />
+                    <Entry x:Name="txtPowerLevel" FontSize="Small"  HorizontalOptions="FillAndExpand" IsVisible="True"  VerticalOptions="Center" Grid.Row="0" Grid.Column="1" ></Entry>
+
+
+                </Grid>
+
+
+
+
+            </ContentView>
+
+            <ContentView Padding="10,0,0,0" BackgroundColor="#E6E6E6" >
+                <Grid  Padding="10" RowSpacing="1" ColumnSpacing="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="50"/>
+
+
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="4*"/>
+                        <ColumnDefinition Width="5*"/>
+                        <ColumnDefinition Width="*"/>
+
+
+                    </Grid.ColumnDefinitions>
+
+
+                    <Label Text="Link profile"  VerticalTextAlignment="Center" BackgroundColor="#E6E6E6" Grid.Row="0" Grid.Column="0" />
+                    <Label x:Name="lbLinkProfile"   Text="" MaxLines="3"   FontSize="Caption" LineBreakMode="TailTruncation" HorizontalTextAlignment="Right" VerticalTextAlignment="Center" BackgroundColor="#E6E6E6" Grid.Row="0" Grid.Column="1" >
+
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer
+                                   Tapped="OnItemClickListnerLinkedProfile"
+                                         NumberOfTapsRequired="1" />
+                        </Label.GestureRecognizers>
+                    </Label>
+
+
+
+                    <Label Text=">" HorizontalTextAlignment="Right" VerticalTextAlignment="Center" BackgroundColor="#E6E6E6" Grid.Row="0" Grid.Column="2" >
+
+                    </Label>
+
+                </Grid>
+
+
+
+
+            </ContentView>
+
+
+            <ContentView Padding="10,0,0,0" BackgroundColor="#E6E6E6" >
+                <Grid  Padding="10" RowSpacing="1" ColumnSpacing="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="50"/>
+
+
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="5*"/>
+                        <ColumnDefinition Width="5*"/>
+
+
+
+                    </Grid.ColumnDefinitions>
+
+
+                    <Label Text="Tari"  VerticalTextAlignment="Center" BackgroundColor="#E6E6E6" Grid.Row="0" Grid.Column="0" />
+                    <Entry x:Name="txtTari" FontSize="Small"  HorizontalOptions="FillAndExpand" IsVisible="True"  VerticalOptions="Center" Grid.Row="0" Grid.Column="1" ></Entry>
+
+                </Grid>
+
+
+
+
+            </ContentView>
+
+
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
+

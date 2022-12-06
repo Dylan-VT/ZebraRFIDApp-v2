@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="ZebraRFIDApp.Pages.Settings.Antenna.LinkedProfilePage">
+    <ContentPage.Content>
+        <ListView x:Name="listLinkProfile" ItemTapped="OnItemSelected" HeightRequest="400" ItemsSource="{Binding linkProfileList}" >
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <TextCell Text="{Binding LinkProfileName}" TextColor="Black"></TextCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </ContentPage.Content>
+
+</ContentPage>

@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <SharedGUID>{92BE7699-651F-4125-B6FF-69562BB3A341}</SharedGUID>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration">
+    <Import_RootNamespace>ZebraRFIDApp</Import_RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)App.xaml" />
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)MainPage.xaml" />
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Pages\About\AboutPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Pages\Settings\SettingPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Pages\Tab\TabbedPageContainner.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Pages\Access\AccessPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Pages\Inventory\InventoryPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Pages\RapidRead\RapidReadPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Pages\ReaderList\ReaderListPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Pages\LocateTag\LocateTagPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Pages\Settings\Sigulation\SingulationControlPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Pages\Settings\StartStopTrigger\StartStopTriggerPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Pages\Settings\TagReporting\TagReportingPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Pages\Settings\Antenna\AntennaPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Pages\Settings\Antenna\LinkedProfilePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Pages\Filter\FilterPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)MainPage.xaml.cs">
+      <DependentUpon>MainPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)AssemblyInfo.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Model\DatabaseItemPage.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Model\MenuItemModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Model\HomeMenuViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)API\ConstantsString.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Pages\About\AboutPage.xaml.cs">
+      <DependentUpon>AboutPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Model\SettingsVewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Pages\DatabasePage.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Pages\Settings\SettingPage.xaml.cs">
+      <DependentUpon>SettingPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Model\ImageMenuModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Pages\Tab\TabbedPageContainner.xaml.cs">
+      <DependentUpon>TabbedPageContainner.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Pages\Access\AccessPage.xaml.cs">
+      <DependentUpon>AccessPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Pages\RapidRead\RapidReadPage.xaml.cs">
+      <DependentUpon>RapidReadPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Model\TagDataViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Pages\ReaderList\ReaderListPage.xaml.cs">
+      <DependentUpon>ReaderListPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Model\ReaderListViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)API\Globals.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)API\SdkHandler.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Model\ReaderModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Pages\LocateTag\LocateTagPage.xaml.cs">
+      <DependentUpon>LocateTagPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Pages\Settings\Sigulation\SingulationControlPage.xaml.cs">
+      <DependentUpon>SingulationControlPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Pages\Settings\StartStopTrigger\StartStopTriggerPage.xaml.cs">
+      <DependentUpon>StartStopTriggerPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Pages\Settings\TagReporting\TagReportingPage.xaml.cs">
+      <DependentUpon>TagReportingPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Model\TagDataModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Model\TagSeenCount.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Pages\Inventory\InventoryPage.xaml.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Model\LinkedProfileModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Pages\Settings\Antenna\AntennaPage.xaml.cs">
+      <DependentUpon>AntennaPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Pages\Settings\Antenna\LinkedProfilePage.xaml.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Pages\Filter\FilterPage.xaml.cs">
+      <DependentUpon>FilterPage.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="$(MSBuildThisFileDirectory)API\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Pages\About\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Pages\Settings\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Pages\Tab\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Pages\Inventory\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Pages\LocateTag\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Pages\RapidRead\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Pages\Access\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Pages\ReaderList\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Pages\Settings\Sigulation\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Pages\Settings\StartStopTrigger\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Pages\Settings\TagReporting\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Pages\Settings\Antenna\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Pages\Filter\" />
+  </ItemGroup>
+</Project>

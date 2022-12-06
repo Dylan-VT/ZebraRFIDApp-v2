@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="ZebraRFIDApp.Pages.LocateTag.LocateTagPage">
+    <ContentPage.Content>
+   
+              <StackLayout>
+            <Grid  HorizontalOptions="FillAndExpand" >
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="40"/>
+                                  
+                                   
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                   
+                                   
+                                </Grid.ColumnDefinitions>
+                <Entry x:Name="txtTagPattern"  HorizontalOptions="FillAndExpand" Grid.Column="0" Grid.Row="0" Placeholder="Tag Pattern"/>
+            </Grid>
+
+            <Grid  VerticalOptions="FillAndExpand" >
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="8*"/>
+                                    <RowDefinition Height="1*"/>
+                                   
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="4*"/>
+                                    <ColumnDefinition Width="2*"/>
+                                     <ColumnDefinition Width="4*"/>
+                                   
+                                </Grid.ColumnDefinitions>
+                 
+                  <BoxView x:Name="precentageBackgroundBoxView"
+                                        BackgroundColor="#D0CFCF"
+                                        Grid.Column="1"
+                                        Grid.Row="1"
+                                        VerticalOptions="FillAndExpand"
+                                        HorizontalOptions="FillAndExpand"
+
+                                        />
+                               <BoxView x:Name="precentageBoxView"
+                                        BackgroundColor="#00FFFFFF"
+                                        Grid.Column="1"
+                                        Grid.Row="1"
+                                        VerticalOptions="FillAndExpand"
+                                        HorizontalOptions="FillAndExpand"
+
+                                        />
+                                
+                              
+                  <Label Grid.Column="0"
+                            Grid.Row="1"
+                            VerticalOptions="End"
+                            x:Name="lbPrecentage" Text="0%"
+                            TextColor="Black" FontSize="15" HorizontalTextAlignment="Center"
+                            VerticalTextAlignment="Center" ></Label>
+           
+                  <Button
+                       Grid.Column="2"
+                       Grid.Row="1"
+                       x:Name = "btnLocateTagStart"
+                       Text="START"
+                       VerticalOptions="End"
+                       HorizontalOptions="Center"
+                       Clicked="OnButtonClickedStartLocateTag" />
+    
+                                
+                               
+             </Grid>
+       </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

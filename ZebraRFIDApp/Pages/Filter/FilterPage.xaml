@@ -1,0 +1,276 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="ZebraRFIDApp.Pages.Filter.PreFilterPage">
+    <ContentPage.Content>
+        <StackLayout>
+
+         <!--Section 01 Fillter 01 -->
+         <Grid HorizontalOptions="FillAndExpand" ColumnSpacing="0">
+
+            <Grid.RowDefinitions>
+               <RowDefinition Height="50" />
+         
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+               <ColumnDefinition Width="2*" />             
+               <ColumnDefinition Width="48*" />
+               <ColumnDefinition Width="48*" />
+               <ColumnDefinition Width="2*" />
+            </Grid.ColumnDefinitions>
+
+            <Button Grid.Column="1"
+                    Grid.Row="0"
+                    VerticalOptions="End"
+                    x:Name="buttonFilterOne"
+                    Text="Fillter 1"
+                    TextColor="White"
+                    FontSize="Small"
+                    Clicked="OnButtonClickedFilterOne"
+                    BorderWidth="1" 
+                    BorderRadius="1" 
+                    BorderColor="CornflowerBlue"
+                    BackgroundColor="CornflowerBlue"
+                    HeightRequest="40"/>
+             <Button Grid.Column="2"
+                    Grid.Row="0"
+                    VerticalOptions="End"
+                    x:Name="buttonFilterTwo"
+                    Text="Fillter 2"
+                    TextColor="CornflowerBlue"
+                    FontSize="Small"
+                    Clicked="OnButtonClickedFilterTwo"
+                    BorderWidth="1" 
+                    BorderRadius="1" 
+                    BorderColor="CornflowerBlue"
+                    BackgroundColor="White"
+                    HeightRequest="40"/>
+             
+
+         </Grid>
+
+        <!--Section 02 tag id -->
+         <Grid HorizontalOptions="FillAndExpand">
+
+            <Grid.RowDefinitions>
+               <RowDefinition Height="50" />
+         
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+               <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+             <Entry x:Name="txtTagID"
+                    HorizontalOptions="FillAndExpand"
+                    Grid.Column="0"
+                    Grid.Row="0"
+                    FontSize="14"
+                    Placeholder="Tag Pattern"/>
+
+         </Grid>
+       
+         <!--Section 03 Memorybank -->
+         <Grid HorizontalOptions="FillAndExpand">
+
+            <Grid.RowDefinitions>
+               <RowDefinition Height="40" />
+         
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+               <ColumnDefinition Width="1*" />
+               <ColumnDefinition Width="55*" />
+               <ColumnDefinition Width="43*" />
+               <ColumnDefinition Width="1*" />
+            </Grid.ColumnDefinitions>
+             <Label Grid.Row="0"
+                    Grid.Column="1"
+                    x:Name="labelMemoryBank"
+                    XAlign="Start"
+                    FontSize="15"
+                    Text="Memory Bank"
+                    LineBreakMode="WordWrap"
+                    MaxLines="1"
+                    VerticalOptions="Center"/>
+             
+             <Picker Grid.Column="2"
+                     Grid.Row="0"
+                     FontSize="Small"
+                     Title="EPC"
+                     x:Name="memoryBankPicker" 
+                     SelectedIndexChanged="OnMemoryBankPickerChanged"
+                     HorizontalOptions="FillAndExpand">
+                   <Picker.Items>
+                       <x:String>EPC</x:String> 
+                       <x:String>TID</x:String>
+                       <x:String>USER</x:String>
+          
+                   </Picker.Items>
+                 </Picker>
+             
+               
+         </Grid>
+
+          <!--Section 04 offset -->
+         <Grid HorizontalOptions="FillAndExpand">
+
+            <Grid.RowDefinitions>
+               <RowDefinition Height="40" />
+         
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+               <ColumnDefinition Width="1*" />
+               <ColumnDefinition Width="55*" />
+               <ColumnDefinition Width="43*" />
+               <ColumnDefinition Width="1*" />
+            </Grid.ColumnDefinitions>
+             <Label Grid.Row="0"
+                    Grid.Column="1"
+                    x:Name="labelOffset"
+                    XAlign="Start"
+                    FontSize="15"
+                    Text="Offset"
+                    LineBreakMode="WordWrap"
+                    MaxLines="1"
+                    VerticalOptions="Center"/>
+             <Entry Grid.Column="2"
+                    Grid.Row="0"
+                    x:Name="txtOffset"
+                    HorizontalOptions="FillAndExpand"
+                    Placeholder="00"
+                    Text="00"
+                     FontSize="Small"
+                    VerticalOptions="Center"/>
+
+         </Grid>
+       
+        <!--Section 05 Action -->
+             <Grid HorizontalOptions="FillAndExpand">
+
+            <Grid.RowDefinitions>
+               <RowDefinition Height="40" />
+         
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+               <ColumnDefinition Width="1*" />
+               <ColumnDefinition Width="33*" />
+               <ColumnDefinition Width="66*" />
+               <ColumnDefinition Width="1*" />
+            </Grid.ColumnDefinitions>
+             <Label Grid.Row="0"
+                    Grid.Column="1"
+                    x:Name="labelActiom"
+                    XAlign="Start"
+                     FontSize="15"
+                    Text="Action"
+                    LineBreakMode="WordWrap"
+                    MaxLines="1"
+                    VerticalOptions="Center"/>
+             
+            
+             <Picker Grid.Column="2"                 
+                     Grid.Row="0"
+                     FontSize="10"
+                     Title="INV A OR ASRT SL"
+                     x:Name="actionPicker" 
+                     SelectedIndexChanged="OnActionPickerChanged"                   
+                     HorizontalOptions="FillAndExpand">
+                   <Picker.Items>
+                       <x:String>INV A NOT INV B OR ASRT SL NOT DSRT SL</x:String> 
+                       <x:String>INV A OR ASRT SL</x:String>
+                       <x:String>NOT INV B OR DSRT SL</x:String>
+                       <x:String>INV A2BB2A NOT INV A OR NEG SL NOT ASRT SL</x:String>
+                       <x:String>INV B NOT INV A OR DSRT SL NOT ASRT SL</x:String>
+                       <x:String>INV B OR DSRT SL</x:String>
+                       <x:String>NOT INV A OR NOT ASRT SL</x:String>
+                       <x:String>NOT INV A2BB2A OR NOT NEG SL</x:String>
+                   </Picker.Items>
+                 </Picker>
+         </Grid>
+         
+        <!--Section 06 TARGET -->
+           
+             <Grid HorizontalOptions="FillAndExpand">
+
+            <Grid.RowDefinitions>
+               <RowDefinition Height="40" />
+         
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+               <ColumnDefinition Width="1*" />
+               <ColumnDefinition Width="55*" />
+               <ColumnDefinition Width="43*" />
+               <ColumnDefinition Width="1*" />
+            </Grid.ColumnDefinitions>
+             <Label Grid.Row="0"
+                    Grid.Column="1"
+                    x:Name="labelTarget"
+                    XAlign="Start"
+                     FontSize="15"
+                    Text="Target"
+                    LineBreakMode="WordWrap"
+                    MaxLines="1"
+                    VerticalOptions="Center"/>
+             
+            
+             <Picker Grid.Column="2"
+                     Grid.Row="0"
+                      FontSize="Small"
+                     Title="SESSION 0"
+                     x:Name="targetPicker" 
+                     SelectedIndexChanged="OnTargetPickerChanged"
+                     HorizontalOptions="FillAndExpand">
+                   <Picker.Items>
+                       <x:String>SESSION S0</x:String> 
+                       <x:String>SESSION S1</x:String>
+                       <x:String>SESSION S2</x:String>
+                       <x:String>SESSION S3</x:String>
+                       <x:String>SL FLAG</x:String>
+                   </Picker.Items>
+                 </Picker>
+         </Grid>
+        
+         <!--Section 07 ENABLE -->
+           
+             <Grid HorizontalOptions="FillAndExpand">
+
+            <Grid.RowDefinitions>
+               <RowDefinition Height="40" />
+         
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+               <ColumnDefinition Width="1*" />
+               <ColumnDefinition Width="55*" />
+               <ColumnDefinition Width="43*" />
+               <ColumnDefinition Width="1*" />
+            </Grid.ColumnDefinitions>
+                 <Label Grid.Row="0"
+                    Grid.Column="1"
+                    x:Name="labelFilter"
+                    XAlign="Start"
+                     FontSize="15"
+                    Text="Filter 1"
+                    LineBreakMode="WordWrap"
+                    MaxLines="1"
+                    VerticalOptions="Center"/>
+             <Switch x:Name="switchEnable"
+                     HorizontalOptions="End"
+                     Toggled="SwitchToggledEnableFilter"
+                     VerticalOptions="Center"
+                     HeightRequest="40"
+                     BackgroundColor="White"
+                     Grid.Row="0"
+                     Grid.Column="2" />
+            
+         </Grid>
+        </StackLayout>
+        
+    </ContentPage.Content>
+</ContentPage>
