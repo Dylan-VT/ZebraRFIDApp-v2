@@ -1,14 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-            xmlns:rapidRead="clr-namespace:ZebraRFIDApp.Pages.RapidRead"
             xmlns:inventory="clr-namespace:ZebraRFIDApp.Pages.Inventory"
-            xmlns:locateTag="clr-namespace:ZebraRFIDApp.Pages.LocateTag"
             xmlns:access="clr-namespace:ZebraRFIDApp.Pages.Access"
+            xmlns:filter="clr-namespace:ZebraRFIDApp.Pages.Filter"
             x:Class="ZebraRFIDApp.Pages.Tab.TabbedPageContainner">
     <!--Pages can be added as references or inline-->
-    <rapidRead:RapidReadPage  Title="Rapid Read"  IconImageSource="tab_rr"></rapidRead:RapidReadPage>
     <inventory:InventoryPage Title="Inventory" IconImageSource="tab_inv"></inventory:InventoryPage>
-    <locateTag:LocateTagPage Title="Locate Tag" IconImageSource="tab_loc"></locateTag:LocateTagPage>
     <access:AccessPage Title="Access" IconImageSource="tab_access"></access:AccessPage>
+    <filter:PreFilterPage Title="Filter" IconImageSource="tab_filter"></filter:PreFilterPage>
 </TabbedPage>

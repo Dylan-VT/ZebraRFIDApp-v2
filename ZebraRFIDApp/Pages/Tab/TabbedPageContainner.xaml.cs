@@ -21,36 +21,27 @@ namespace ZebraRFIDApp.Pages.Tab
             InitializeComponent();
             var pages = Children.GetEnumerator();
            
-            if (page == ConstantsString.RapidRadLoad)
+            if (page == ConstantsString.InventoryLoad)
             {
                 pages.MoveNext(); // First page
                 CurrentPage = pages.Current;
                 Title = ConstantsString.RapidRead;
             }
-            else if(page == ConstantsString.InventoryLoad)
+            else if(page == ConstantsString.AccessControl)
             {
                 pages.MoveNext(); // First page
                 pages.MoveNext(); // Second page
                 CurrentPage = pages.Current;
                 Title = ConstantsString.Inventory;
             }
-            else if(page == ConstantsString.LocateTagLoad)
+            else if(page == ConstantsString.PreFilters)
             {
                 pages.MoveNext(); // First page
                 pages.MoveNext(); // Second page
                 pages.MoveNext(); // Third page
                 CurrentPage = pages.Current;
-                Title = ConstantsString.LocateTag;
+                Title = ConstantsString.PreFilters;
 
-            }
-            else
-            {
-                pages.MoveNext(); // First page
-                pages.MoveNext(); // Second page
-                pages.MoveNext(); // Third page
-                pages.MoveNext(); // Fourth page
-                CurrentPage = pages.Current;
-                Title = ConstantsString.AccessControl;
             }
 
         }

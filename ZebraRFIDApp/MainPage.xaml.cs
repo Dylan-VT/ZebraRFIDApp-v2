@@ -8,9 +8,9 @@ using Xamarin.Forms;
 using ZebraRFIDApp.API;
 using ZebraRFIDApp.Model;
 using ZebraRFIDApp.Pages.About;
-using ZebraRFIDApp.Pages.Filter;
 using ZebraRFIDApp.Pages.Settings;
 using ZebraRFIDApp.Pages.Tab;
+using ZebraRFIDApp.Pages.Database;
 
 namespace ZebraRFIDApp
 {
@@ -35,15 +35,15 @@ namespace ZebraRFIDApp
         {
             if (tappedEventArg.ItemIndex == 0)
             {
-                Navigation.PushAsync(new TabbedPageContainner(ConstantsString.RapidRadLoad));
+                Navigation.PushAsync(new TabbedPageContainner(ConstantsString.Inventory));
             }
             else if (tappedEventArg.ItemIndex == 1)
             {
-                Navigation.PushAsync(new TabbedPageContainner(ConstantsString.InventoryLoad));
+                Navigation.PushAsync(new TabbedPageContainner(ConstantsString.AccessControl));
             }
             else if (tappedEventArg.ItemIndex == 2)
             {
-                Navigation.PushAsync(new TabbedPageContainner(ConstantsString.LocateTagLoad));
+                Navigation.PushAsync(new TabbedPageContainner(ConstantsString.PreFilters));
             }
             else if (tappedEventArg.ItemIndex == 3)
             {
@@ -51,14 +51,6 @@ namespace ZebraRFIDApp
             }
             else if (tappedEventArg.ItemIndex == 4)
             {
-                Navigation.PushAsync(new TabbedPageContainner(ConstantsString.AccessControl));
-            }
-            else if (tappedEventArg.ItemIndex == 5)
-            {
-                Navigation.PushAsync(new PreFilterPage());
-            }
-            else if (tappedEventArg.ItemIndex == 6)
-            {            
                 Navigation.PushAsync(new AboutPage());
             }
             else

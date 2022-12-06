@@ -16,9 +16,9 @@ namespace ZebraRFIDApp.Model
         {
             MenuList = new ObservableCollection<MenuItemModel>();
             MenuList.Add(new MenuItemModel { Name = ConstantsString.Inventory });
-            MenuList.Add(new MenuItemModel { Name = ConstantsString.Setings });
             MenuList.Add(new MenuItemModel { Name = ConstantsString.AccessControl });
             MenuList.Add(new MenuItemModel { Name = ConstantsString.PreFilters });
+            MenuList.Add(new MenuItemModel { Name = ConstantsString.Setings });
             MenuList.Add(new MenuItemModel { Name = ConstantsString.About });
         }
     }

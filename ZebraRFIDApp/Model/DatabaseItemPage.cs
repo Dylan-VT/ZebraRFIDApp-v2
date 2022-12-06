@@ -54,17 +54,15 @@ namespace ZebraRFIDApp.Model
         public ObservableCollection<MenuItem> MenuList { get; set; }
 
 
-        List<string> cellLabelsMessageBoard = new List<string>() {
-            "assetItemID: ",
-            "truckID: ",
-            "license_plate: ",
-            "make_model: ",
-            "manufactureYear: ",
-            "driverID: ",
-            "acquisition_date: ",
-            "manufactureDate: ",
-            "dateEntered: ",
-            "installationDate: "
+        List<string> truckCellLabels = new List<string>() {
+            "Truck ID: ",
+            "License Plate: ",
+            "Make & Model: ",
+            "Manufactured (Year): ",
+            "Driver ID: ",
+            "Acquisition Date: ",
+            "Deployment Date: ",
+            "Purchase Price: ",
 		};
 
         List<string> cellLabelsInspection = new List<string>() {
@@ -101,13 +99,13 @@ namespace ZebraRFIDApp.Model
             }
             if (index != -1)
             {
-                for (int i = 0; i < cellLabelsMessageBoard.Count; i++)
+                for (int i = 0; i < truckCellLabels.Count; i++)
                 {   //create new buttons for Table
                     Console.WriteLine(downloaded_list[index][i]);
                     if (i == 0) {
                         var itemField = new EntryCell()
                         {
-                            Label = cellLabelsMessageBoard[i],
+                            Label = truckCellLabels[i],
                             Text = tagID,
 
                         };
@@ -117,7 +115,7 @@ namespace ZebraRFIDApp.Model
                     {
                         var itemField = new EntryCell()
                         {
-                            Label = cellLabelsMessageBoard[i],
+                            Label = truckCellLabels[i],
                             Text = downloaded_list[index][i + 1],
 
                         };
@@ -147,13 +145,13 @@ namespace ZebraRFIDApp.Model
             }
             else
             {
-                for (int i = 0; i < cellLabelsMessageBoard.Count; ++i)
+                for (int i = 0; i < truckCellLabels.Count; ++i)
                 {   //create new buttons for Table
                     if (i == 0)
                     {
                         var itemField = new EntryCell()
                         {
-                            Label = cellLabelsMessageBoard[i],
+                            Label = truckCellLabels[i],
                             Text = tagID,
 
                         };
@@ -163,7 +161,7 @@ namespace ZebraRFIDApp.Model
                     {
                         var itemField = new EntryCell()
                         {
-                            Label = cellLabelsMessageBoard[i],
+                            Label = truckCellLabels[i],
                         };
                         cells.Add(itemField);
                     }

@@ -4,6 +4,8 @@ namespace ZebraRFIDApp.API
     public static class ConstantsString
     {
             public const string MsgNoInternet = "No Internet Connection";
+            public const string Database = "Database";
+
 
             public const int HeaderExpandHeight = 30;
             public const int HeaderDefaultHeight = 0;
