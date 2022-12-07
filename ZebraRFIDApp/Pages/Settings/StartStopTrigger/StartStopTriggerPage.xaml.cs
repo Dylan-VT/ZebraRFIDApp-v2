@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 
 using Xamarin.Forms;
 using ZebraRFIDApp.API;
@@ -34,7 +33,7 @@ namespace ZebraRFIDApp.Pages.Settings.StartStopTrigger
             {
                 DisplayAlert(ConstantsString.Msg, ConstantsString.MsgUnableToLoadData, ConstantsString.MsgActionOk);
             }
-         
+
         }
 
         /// <summary>
@@ -54,7 +53,7 @@ namespace ZebraRFIDApp.Pages.Settings.StartStopTrigger
             {
                 DisplayAlert(ConstantsString.Msg, ConstantsString.MsgUnableToSaveData, ConstantsString.MsgActionOk);
             }
-           
+
         }
 
         /// <summary>
@@ -99,7 +98,7 @@ namespace ZebraRFIDApp.Pages.Settings.StartStopTrigger
                     ShowStopNAttempts();
                     break;
             }
-     
+
 
         }
 
@@ -401,9 +400,9 @@ namespace ZebraRFIDApp.Pages.Settings.StartStopTrigger
         public void UpdateStopTriggerUi()
         {
 
-           try
+            try
             {
-             
+
                 StopTriggerConfiguration stopTriggerConfiguration = SdkHandler.ConnectedReader.Configuration.StopTriggerConfiguration;
                 if (!stopTriggerConfiguration.StopOnTimeout)
                 {
@@ -442,7 +441,7 @@ namespace ZebraRFIDApp.Pages.Settings.StartStopTrigger
 
                     ShowStopNAttempts();
                     stopPicker.SelectedIndex = ConstantsString.StopTriggerNAttemptsIndex;
-                    txtStopNAttemptsTimeout.Text = stopTriggerConfiguration.StopTimeout.ToString(); 
+                    txtStopNAttemptsTimeout.Text = stopTriggerConfiguration.StopTimeout.ToString();
                     txtStopNAttempts.Text = stopTriggerConfiguration.StopInventoryCount.ToString();
 
                 }

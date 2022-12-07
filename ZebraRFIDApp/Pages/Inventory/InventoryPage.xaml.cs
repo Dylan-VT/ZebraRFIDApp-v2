@@ -1,19 +1,15 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
-using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
-using System.Net.NetworkInformation;
-using System.Threading.Tasks;
-using Newtonsoft.Json;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 using ZebraRFIDApp.API;
 using ZebraRFIDApp.Model;
 using ZebraRfidSdk;
-using static System.Net.WebRequestMethods;
 
 namespace ZebraRFIDApp.Pages.Inventory
 {
@@ -22,7 +18,8 @@ namespace ZebraRFIDApp.Pages.Inventory
     /// InventoryPage
     /// </summary>
     public partial class InventoryPage : ContentPage
-    {
+    {   
+
         private static readonly HttpClient client = new HttpClient();
         public List<List<string>> downloaded_data = new List<List<string>>();
         bool disable = false;
@@ -39,24 +36,23 @@ namespace ZebraRFIDApp.Pages.Inventory
         Readers readerManager;
         public class DataFromDataBase
         {
-            public List<MessageBoard> data { get; set; }
+            public List<Truck> data { get; set; }
         }
-        public class MessageBoard
+        public class Truck
         {
-            public string message { get; set; }
-            public string assetItemID { get; set; }
-            public string assetItemName { get; set; }
-            public string manufactureDate { get; set; }
-            public string manufacturer { get; set; }
-            public string vendor { get; set; }
-            public string purchaseDate { get; set; }
-            public string PurchasePrice { get; set; }
-
-            public string Comment { get; set; }
+            public string truckID { get; set; }
+            public string license_plate { get; set; }
+            public string make_model { get; set; }
+            public string manufactureYear { get; set; }
+            public string driverID { get; set; }
+            public string acquisition_date { get; set; }
+            public string deployment_date { get; set; }
             public string tagID { get; set; }
-            public string rfidCode { get; set; }
+            public string manufactureDate { get; set; }
             public string dateEntered { get; set; }
             public string installationDate { get; set; }
+            public string message { get; set; }
+
         }
         public InventoryPage()
         {
@@ -119,7 +115,8 @@ namespace ZebraRFIDApp.Pages.Inventory
         void UpdateUI()
         {
             TagDataModel testTag = new TagDataModel();
-
+            testTag.tagID = "56414F54000000000000000000000005";
+            tagDataList.Add(testTag);
             reverseTagDataList = new List<TagDataModel>(tagDataList);
             lstTagData.ItemsSource = reverseTagDataList;
 
@@ -436,7 +433,6 @@ namespace ZebraRFIDApp.Pages.Inventory
         void OnButtonClickedDownload(object sender, EventArgs eventArgs)
         {
             string fileName = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "temp.txt");
-
             if (CheckForInternetConnection())
             {
                 var json = new WebClient().DownloadString("https://jjung2.w3.uvm.edu/RFIDproject/REST_API/api/read.php?request=tag&id=all");
@@ -450,34 +446,32 @@ namespace ZebraRFIDApp.Pages.Inventory
                     Console.WriteLine(item.tagID);
                     data = new List<string>();
 
-                    data.Add("MessageBoard");
+                    data.Add("Truck");
 
-                    data.Add(item.message);
-                    data.Add(item.assetItemID);
-                    data.Add(item.assetItemName);
-                    data.Add(item.manufactureDate);
-                    data.Add(item.manufacturer);
-                    data.Add(item.vendor);
-                    data.Add(item.purchaseDate);
-                    data.Add(item.PurchasePrice);
-                    data.Add(item.Comment);
+                    data.Add(item.truckID);
+                    data.Add(item.license_plate);
+                    data.Add(item.make_model);
+                    data.Add(item.manufactureYear);
+                    data.Add(item.driverID);
+                    data.Add(item.acquisition_date);
+                    data.Add(item.deployment_date);
                     data.Add(item.tagID);
-                    data.Add(item.rfidCode);
+                    data.Add(item.manufactureDate);
                     data.Add(item.dateEntered);
                     data.Add(item.installationDate);
+                    data.Add(item.message);
 
                     using (StreamWriter sw = System.IO.File.AppendText(fileName))
                     {
-                        sw.WriteLine("MessageBoard^" + item.message + '|' + item.assetItemID + '|' + item.assetItemName + '|'
-                        + item.manufactureDate + '|' + item.manufacturer + '|' + item.vendor + '|' + item.purchaseDate + '|'
-                        + item.PurchasePrice + '|' + item.Comment + '|' + item.tagID + '|' + item.rfidCode + '|' + item.dateEntered
-                        + '|' + item.installationDate);
+
+                        sw.WriteLine("Truck^" + item.truckID + '|' + item.license_plate + '|' + item.make_model + '|' + item.manufactureYear + '|'
+                          + item.driverID + '|' + item.acquisition_date + '|' + item.deployment_date + '|' + item.tagID + '|' + item.manufactureDate + '|'
+                          + item.dateEntered + '|' + item.installationDate + '|' + item.message);
                     }
 
                     downloaded_data.Add(data);
                 }
                 var text = System.IO.File.ReadAllText(fileName);
-                Console.WriteLine(text);
                 DisplayAlert(ConstantsString.Msg, "successfully downloaded from database", ConstantsString.MsgActionOk);
             }
             else

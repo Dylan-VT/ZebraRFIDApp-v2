@@ -1,8 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
+using Xamarin.Forms;
 using ZebraRFIDApp.API;
 using ZebraRfidSdk;
-using Xamarin.Forms;
 
 namespace ZebraRFIDApp.Pages.Settings.TagReporting
 {
@@ -30,7 +29,7 @@ namespace ZebraRFIDApp.Pages.Settings.TagReporting
 
         }
 
-      
+
 
         /// <summary>
         /// Page on Disappearing

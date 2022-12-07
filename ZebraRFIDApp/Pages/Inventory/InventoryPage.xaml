@@ -146,8 +146,17 @@
                         WidthRequest="300"                  
                         HorizontalOptions="Center"
                         Clicked="OnButtonClickedStartStop" />
-       
-         </StackLayout>
+            <Button
+                        Grid.Column="0"
+                        Grid.Row="0"
+                        x:Name = "btnDownload"
+                        BackgroundColor="#00ff001C"
+                        Text="Download"
+                        TextColor="#3d8bff"
+                        WidthRequest="300"                  
+                        HorizontalOptions="Center"
+                        Clicked="OnButtonClickedDownload" />
+        </StackLayout>
            
          
 

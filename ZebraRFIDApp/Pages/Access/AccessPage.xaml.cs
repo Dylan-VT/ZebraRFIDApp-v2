@@ -1,9 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using ZebraRFIDApp.API;
 using Xamarin.Forms;
+using ZebraRFIDApp.API;
 using ZebraRfidSdk;
-using ZebraRFIDApp.Model;
 
 namespace ZebraRFIDApp.Pages.Access
 {
@@ -21,7 +19,7 @@ namespace ZebraRFIDApp.Pages.Access
         public AccessPage()
         {
             InitializeComponent();
-            
+
         }
 
         /// <summary>
@@ -255,7 +253,7 @@ namespace ZebraRFIDApp.Pages.Access
             {
                 System.Diagnostics.Debug.WriteLine("error " + e.Message);
             }
-           
+
         }
 
         /// <summary>
@@ -351,7 +349,7 @@ namespace ZebraRFIDApp.Pages.Access
             {
                 System.Diagnostics.Debug.WriteLine("error " + e.Message);
             }
-            
+
         }
 
         /// <summary>
@@ -366,11 +364,12 @@ namespace ZebraRFIDApp.Pages.Access
             {
                 bool tagWriteResult = Globals.ConnectedReader.AccessOperationsWriteTag(txtTagID.Text, txtPassword.Text, entryData.Text, Offset, selectedMemoryBankValue, false);
                 Console.WriteLine("SuccessWrite" + tagWriteResult);
-                
+
                 if (tagWriteResult)
                 {
                     DisplayAlert(ConstantsString.MsgConnectTitle, ConstantsString.MessageWriteSuccess, ConstantsString.MsgActionOk);
-                }else
+                }
+                else
                 {
                     DisplayAlert(ConstantsString.MsgConnectTitle, ConstantsString.MessageWriteFailed, ConstantsString.MsgActionOk);
                 }
@@ -380,7 +379,7 @@ namespace ZebraRFIDApp.Pages.Access
             {
                 System.Diagnostics.Debug.WriteLine("error " + e.Message);
             }
-            
+
         }
 
         /// <summary>
@@ -406,7 +405,8 @@ namespace ZebraRFIDApp.Pages.Access
                     {
                         DisplayAlert(ConstantsString.MsgConnectTitle, ConstantsString.MessageLockFailed, ConstantsString.MsgActionOk);
                     }
-                }else
+                }
+                else
                 {
                     bool tagKillResult = Globals.ConnectedReader.AccessOperationsKillTag(txtTagID.Text, txtPassword.Text);
                     Console.WriteLine("SuccessKill" + tagKillResult);
@@ -472,13 +472,13 @@ namespace ZebraRFIDApp.Pages.Access
                         entryLength.Text = ByteSize.ToString();
                         break;
                 }
-                
+
             }
             catch (Exception e)
             {
                 System.Diagnostics.Debug.WriteLine("error " + e.Message);
             }
-            
+
         }
     }
 }

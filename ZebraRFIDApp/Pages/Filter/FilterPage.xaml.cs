@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 
 using Xamarin.Forms;
 using ZebraRFIDApp.API;
@@ -11,7 +10,7 @@ namespace ZebraRFIDApp.Pages.Filter
     /// </summary>
     public partial class PreFilterPage : ContentPage
     {
-     
+
         public PreFilterPage()
         {
             InitializeComponent();
@@ -33,7 +32,7 @@ namespace ZebraRFIDApp.Pages.Filter
             try
             {
                 UpdateFilterOneButtonColor();
-             
+
             }
             catch (Exception e)
             {
@@ -51,7 +50,7 @@ namespace ZebraRFIDApp.Pages.Filter
             try
             {
                 UpdateFilterTwoButtonColor();
-                
+
             }
             catch (Exception e)
             {
@@ -59,7 +58,7 @@ namespace ZebraRFIDApp.Pages.Filter
             }
         }
 
-        
+
         /// <summary>
         /// Update the selection color for the filter one button.
         /// </summary>
@@ -96,7 +95,7 @@ namespace ZebraRFIDApp.Pages.Filter
         private void OnMemoryBankPickerChanged(object sender, EventArgs pickerEventArg)
         {
             System.Diagnostics.Debug.WriteLine(" OnMemoryBankPickerChanged ");
-           
+
 
         }
 

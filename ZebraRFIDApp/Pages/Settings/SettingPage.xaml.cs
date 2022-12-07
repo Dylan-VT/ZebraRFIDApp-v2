@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 
 using Xamarin.Forms;
 using ZebraRFIDApp.API;
@@ -22,7 +21,7 @@ namespace ZebraRFIDApp.Pages.Settings
             InitializeComponent();
             Title = ConstantsString.Settings;
             BindingContext = new SettingsVewModel();
-            
+
         }
 
 
@@ -42,13 +41,13 @@ namespace ZebraRFIDApp.Pages.Settings
         /// <param name="tappedEventArg">Event argument</param>
         private void OnItemSelected(Object sender, ItemTappedEventArgs tappedEventArg)
         {
-     
+
             int selectedIndex = tappedEventArg.ItemIndex;
 
             switch (selectedIndex)
             {
                 case 0:
-                        Navigation.PushAsync(new ReaderListPage());
+                    Navigation.PushAsync(new ReaderListPage());
                     break;
                 case 2:
                     if (SdkHandler.ConnectedReader != null)
@@ -64,7 +63,7 @@ namespace ZebraRFIDApp.Pages.Settings
                     {
                         DisplayAlert(ConstantsString.Msg, ConstantsString.MsgNoActiveReader, ConstantsString.MsgActionOk);
                     }
-                    
+
                     break;
                 case 3:
 
@@ -81,7 +80,7 @@ namespace ZebraRFIDApp.Pages.Settings
                     {
                         DisplayAlert(ConstantsString.Msg, ConstantsString.MsgNoActiveReader, ConstantsString.MsgActionOk);
                     }
-                   
+
                     break;
                 case 4:
 
@@ -98,10 +97,10 @@ namespace ZebraRFIDApp.Pages.Settings
                     {
                         DisplayAlert(ConstantsString.Msg, ConstantsString.MsgNoActiveReader, ConstantsString.MsgActionOk);
                     }
-                   
+
                     break;
                 case 5:
-                 
+
                     if (SdkHandler.ConnectedReader != null)
                     {
                         if (Globals.IsInventoryStart)
@@ -115,13 +114,13 @@ namespace ZebraRFIDApp.Pages.Settings
                     {
                         DisplayAlert(ConstantsString.Msg, ConstantsString.MsgNoActiveReader, ConstantsString.MsgActionOk);
                     }
-                    
+
                     break;
                 default:
                     DisplayAlert(ConstantsString.Msg, ConstantsString.MsgNotSupported, ConstantsString.MsgActionOk);
                     break;
             }
-            
+
         }
     }
 }

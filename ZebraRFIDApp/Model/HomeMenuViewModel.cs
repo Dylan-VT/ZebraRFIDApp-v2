@@ -1,6 +1,5 @@
-﻿using System;
+﻿using BarcodeSannerApp.Model;
 using System.Collections.ObjectModel;
-using BarcodeSannerApp.Model;
 using ZebraRFIDApp.API;
 
 namespace ZebraRFIDApp.Model

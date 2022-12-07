@@ -1,5 +1,4 @@
-﻿using System;
-namespace BarcodeSannerApp.Model
+﻿namespace BarcodeSannerApp.Model
 {
     /// <summary>
     /// Menu Item Model
@@ -7,6 +6,6 @@ namespace BarcodeSannerApp.Model
     public class MenuItemModel
     {
         public string Name { get; set; }
-   
+
     }
 }

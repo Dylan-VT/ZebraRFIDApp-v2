@@ -1,5 +1,4 @@
-﻿using System;
-using ZebraRfidSdk;
+﻿using ZebraRfidSdk;
 
 namespace ZebraRFIDApp.Model
 {
@@ -20,8 +19,8 @@ namespace ZebraRFIDApp.Model
             TagData = tagData;
             TagID = tagData.Id;
             SeenCount = (tagData == null) ? 1 : (tagData.SeenCount == 0) ? 1 : tagData.SeenCount;
-           
-            
+
+
 
         }
 

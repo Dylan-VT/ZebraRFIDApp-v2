@@ -4,7 +4,6 @@
 <dict>
 	<key>UIDeviceFamily</key>
 	<array>
-		<integer>1</integer>
 		<integer>2</integer>
 	</array>
 	<key>UISupportedInterfaceOrientations</key>
@@ -23,7 +22,7 @@
 	<key>CFBundleDisplayName</key>
 	<string>ZebraRFIDApp</string>
 	<key>CFBundleIdentifier</key>
-	<string>uvm.rfid.provprof</string>
+	<string>uvm.rfid</string>
 	<key>CFBundleVersion</key>
 	<string>1.0</string>
 	<key>UILaunchStoryboardName</key>
@@ -43,7 +42,7 @@
 	<key>XSAppIconAssets</key>
 	<string>Assets.xcassets/AppIcon.appiconset</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.0.10</string>
+	<string>1.0.11</string>
 	<key>NSBluetoothAlwaysUsageDescription</key>
 	<string>Bluetooth is used to discover, connect and communicate with nearby devices.</string>
 </dict>

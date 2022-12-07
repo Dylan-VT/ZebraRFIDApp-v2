@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using Xamarin.Forms;
-using Xamarin.Forms.Internals;
 using ZebraRFIDApp.API;
 using ZebraRFIDApp.Model;
 
@@ -47,7 +46,7 @@ namespace ZebraRFIDApp.Pages.Settings.Antenna
         {
             base.OnAppearing();
 
-         
+
         }
 
         /// <summary>
@@ -60,13 +59,14 @@ namespace ZebraRFIDApp.Pages.Settings.Antenna
 
             foreach (string profileLink in linkProfileArray)
             {
-                if  (profileLink == Globals.SelectedLinkProfileName) {
-                    linkProfileList.Add(new LinkedProfileModel { LinkProfileName = ConstantsString.CheckMark  + ConstantsString.UiSpaceFoTheCheckMark + profileLink });
+                if (profileLink == Globals.SelectedLinkProfileName)
+                {
+                    linkProfileList.Add(new LinkedProfileModel { LinkProfileName = ConstantsString.CheckMark + ConstantsString.UiSpaceFoTheCheckMark + profileLink });
                 }
                 else
                 {
                     linkProfileList.Add(new LinkedProfileModel { LinkProfileName = ConstantsString.UiSpaceFoTheUnCheckMark + profileLink });
-                }              
+                }
 
             }
             listLinkProfile.ItemsSource = linkProfileList;
@@ -81,7 +81,7 @@ namespace ZebraRFIDApp.Pages.Settings.Antenna
         private void OnItemSelected(Object sender, ItemTappedEventArgs tappedEventArg)
         {
             var selectedLinkProfilename = (LinkedProfileModel)(tappedEventArg.Item);
-            Globals.SelectedLinkProfileName = linkProfileArray[tappedEventArg.ItemIndex];           
+            Globals.SelectedLinkProfileName = linkProfileArray[tappedEventArg.ItemIndex];
             Globals.SelectedLinkProfileNameIndex = tappedEventArg.ItemIndex;
             refreshListView();
 
@@ -94,7 +94,7 @@ namespace ZebraRFIDApp.Pages.Settings.Antenna
         {
             this.listLinkProfile.ItemsSource = null;
             PrepareTheLinkProfileList();
-           
+
         }
 
 

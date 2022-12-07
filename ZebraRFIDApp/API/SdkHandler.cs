@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Xamarin.Forms;
 using ZebraRFIDApp.Model;
 using ZebraRfidSdk;
@@ -10,7 +8,7 @@ namespace ZebraRFIDApp.API
 {
     public class SdkHandler
     {
-       
+
         public static List<Reader> ReaderList
         {
             set { readerList = value; }
@@ -21,7 +19,7 @@ namespace ZebraRFIDApp.API
         public static List<TagDataModel> tagDataList = new List<TagDataModel>();
         public static string totalTag;
         public static string totalUniqueTag;
-       
+
 
         static List<TagData> groupTagsData = new List<TagData>();
         static List<TagSeenCount> tagSeenCounts = new List<TagSeenCount>();
@@ -130,7 +128,7 @@ namespace ZebraRFIDApp.API
                 Console.WriteLine("Exception" + e.Message);
             }
 
-           
+
         }
 
         /// <summary>
@@ -188,9 +186,9 @@ namespace ZebraRFIDApp.API
         {
             if (TagSeenCountList != null)
             {
-                TagSeenCountList.Clear(); 
+                TagSeenCountList.Clear();
             }
-            
+
         }
 
         /// <summary>
@@ -232,7 +230,7 @@ namespace ZebraRFIDApp.API
         /// </summary>
         /// <param name="tagData"></param>
         /// <param name="visible"></param>
-        public static void UpdateTagDataList(TagData tagData,bool visible)
+        public static void UpdateTagDataList(TagData tagData, bool visible)
         {
             try
             {
@@ -247,7 +245,7 @@ namespace ZebraRFIDApp.API
             {
                 Console.WriteLine("Exception " + e.Message);
             }
-            
+
         }
 
         /// <summary>
@@ -297,11 +295,11 @@ namespace ZebraRFIDApp.API
             try
             {
                 ConnectedReader = reader;
-                
-               
+
+
                 if (ConnectedReader != null)
                 {
-                   
+
                     if (Globals.ReaderBatchMode != Globals.BatchModeState.BatchModeConnected)
                     {
                         BatchMode batchMode = ConnectedReader.Configuration.BatchModeConfiguration;
@@ -331,7 +329,7 @@ namespace ZebraRFIDApp.API
 
                 }
 
-               
+
 
             }
             catch (Exception e)
@@ -366,7 +364,7 @@ namespace ZebraRFIDApp.API
                 if (availableReader == null)
                 {
                     AddActiveReaders(readerInfo);
-                  
+
 
                 }
             }
@@ -410,11 +408,11 @@ namespace ZebraRFIDApp.API
                 totalUniqueTag = GroupTagsData.Count.ToString();
 
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 Console.WriteLine("Exception " + e.Message);
             }
-            
+
 
         }
 
@@ -425,19 +423,19 @@ namespace ZebraRFIDApp.API
         /// </summary>
         /// <param name="tagData">TagData</param>
         /// <param name="tagSeenCount">TagSeenCount</param>
-        public static void UpdateTagDetail(TagData tagData , TagSeenCount tagSeenCount)
+        public static void UpdateTagDetail(TagData tagData, TagSeenCount tagSeenCount)
         {
-         
+
 
             TagDataModel avilablityOfTagDataId = tagDataList.Find((obj) => obj.tagData.Id == tagData.Id);
             if (avilablityOfTagDataId == null)
             {
-  
+
                 string pc = string.Format(ConstantsString.PcFormat, System.Environment.NewLine, FormatingTagDataProperty(tagData.Pc));
                 string rssi = string.Format(ConstantsString.RssiFormat, System.Environment.NewLine, FormatingTagDataProperty(tagData.PeakRSSI.ToString()));
                 string phase = string.Format(ConstantsString.PhaseFormat, System.Environment.NewLine, FormatingTagDataProperty(tagData.PhaseInfo.ToString()));
                 string channel = string.Format(ConstantsString.ChannerFormat, System.Environment.NewLine, FormatingTagDataProperty(tagData.ChannelIndex.ToString()));
-             
+
                 tagDataList.Add(new TagDataModel
                 {
                     tagID = tagData.Id,
@@ -456,7 +454,7 @@ namespace ZebraRFIDApp.API
                 var indexOf = tagDataList.IndexOf(tagDataList.Find(scanner => scanner.tagID == tagData.Id));
                 if (tagSeenCount != null)
                 {
-                    if (Globals.UniqueTagEnabled && Globals.ReaderBatchMode != Globals.BatchModeState.Enable &&  Globals.ReaderBatchMode != Globals.BatchModeState.BatchModeConnected)
+                    if (Globals.UniqueTagEnabled && Globals.ReaderBatchMode != Globals.BatchModeState.Enable && Globals.ReaderBatchMode != Globals.BatchModeState.BatchModeConnected)
                     {
                         tagDataList[indexOf].tagSeenCount = "1";
                     }
@@ -464,18 +462,18 @@ namespace ZebraRFIDApp.API
                     {
                         tagDataList[indexOf].tagSeenCount = tagSeenCount.SeenCount.ToString();
                     }
-                    
-                    
+
+
                 }
                 else
                 {
                     tagDataList[indexOf].tagSeenCount = "1";
                 }
-                
+
             }
         }
 
-  
+
 
         /// <summary>
         /// Formatings the tag data property.
@@ -484,7 +482,7 @@ namespace ZebraRFIDApp.API
         /// <param name="tagDataProperty">Tag data property.</param>
         private static string FormatingTagDataProperty(string tagDataProperty)
         {
-           return (tagDataProperty == "0" || tagDataProperty == "" || tagDataProperty == null) ? "_" : tagDataProperty;
+            return (tagDataProperty == "0" || tagDataProperty == "" || tagDataProperty == null) ? "_" : tagDataProperty;
         }
 
         /// <summary>
@@ -541,7 +539,7 @@ namespace ZebraRFIDApp.API
         }
 
 
-       
+
 
         /// <summary>
         /// Get paired readers
@@ -565,7 +563,7 @@ namespace ZebraRFIDApp.API
             return activeReaderList;
         }
 
-   
+
 
     }
 }

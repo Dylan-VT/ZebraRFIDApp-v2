@@ -67,15 +67,16 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <MtouchArch>ARM64</MtouchArch>
-    <CodesignKey>Apple Development: Created via API (LGYXM55AK7)</CodesignKey>
+    <CodesignKey>iPhone Distribution: Wenzhe Chen (2VRJN5ZGG6)</CodesignKey>
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
     <MtouchLink>SdkOnly</MtouchLink>
     <MtouchSdkVersion>16.1</MtouchSdkVersion>
     <BuildIpa>true</BuildIpa>
-    <CodesignProvision>
-    </CodesignProvision>
+    <CodesignProvision>RFID App Provisioning Profile</CodesignProvision>
     <PlatformTarget>x64</PlatformTarget>
-    <IpaIncludeArtwork>true</IpaIncludeArtwork>
+    <IpaIncludeArtwork>false</IpaIncludeArtwork>
+    <IpaPackageName>
+    </IpaPackageName>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(RunConfiguration)' == 'Default' ">
     <AppExtensionDebugBundleId />
@@ -326,6 +327,9 @@
     </PackageReference>
     <PackageReference Include="Xamarin.Forms" Version="5.0.0.2012" />
     <PackageReference Include="Xamarin.Essentials" Version="1.1.0" />
+    <PackageReference Include="Xamarin.Swift">
+      <Version>1.0.11</Version>
+    </PackageReference>
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />

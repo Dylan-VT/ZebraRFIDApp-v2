@@ -1,5 +1,4 @@
-﻿using System;
-using ZebraRfidSdk;
+﻿using ZebraRfidSdk;
 
 namespace ZebraRFIDApp.API
 {
