@@ -117,6 +117,7 @@ namespace ZebraRFIDApp.Pages.Inventory
             TagDataModel testTag = new TagDataModel();
             testTag.tagID = "56414F54000000000000000000000005";
             tagDataList.Add(testTag);
+
             reverseTagDataList = new List<TagDataModel>(tagDataList);
             lstTagData.ItemsSource = reverseTagDataList;
 
@@ -133,7 +134,16 @@ namespace ZebraRFIDApp.Pages.Inventory
         /// <param name="sender">Sender</param>
         /// <param name="tappedEventArg">Event Argument</param>
         private void OnItemSelected(Object sender, ItemTappedEventArgs tappedEventArg)
-        {
+        {   
+            //if downloaded data is not read
+            try
+            {
+
+            } 
+            catch
+            {
+                DisplayAlert("Error", "Could not read items. Make sure to download.", "Ok");
+            }
             //open DatabaseItemPage for that tag
             Navigation.PushAsync(new DatabaseItemPage(tagDataList[tappedEventArg.ItemIndex].tagID, downloaded_data));
             /* Original Code
@@ -316,22 +326,11 @@ namespace ZebraRFIDApp.Pages.Inventory
                         string[] currentCachedRequestParameters = currentCachedRequest[1].Split('|');
                         database_type = currentCachedRequest[0];
 
+                        Console.WriteLine(s);
 
-
-                        if (database_type == "MessageBoard")
+                        if (database_type == "TruckPost")
                         {
-                            // Need help to understand what is going on here
-                            Console.WriteLine(
-                                " " + currentCachedRequestParameters[0] +
-                                " " + currentCachedRequestParameters[1] +
-                                " " + currentCachedRequestParameters[2] +
-                                " " + currentCachedRequestParameters[3] +
-                                " " + currentCachedRequestParameters[4] +
-                                " " + currentCachedRequestParameters[5] +
-                                " " + currentCachedRequestParameters[6] +
-                                " " + currentCachedRequestParameters[7] +
-                                " " + currentCachedRequestParameters[8] +
-                                " " + currentCachedRequestParameters[9]);
+
                             var values = new Dictionary<string, string>
                             {
                             /* 
@@ -348,36 +347,37 @@ namespace ZebraRFIDApp.Pages.Inventory
                             data.Add(item.dateEntered);
                             data.Add(item.installationDate);
                             */
-                                { "request", "message"},
+                                { "request", "truck"},
 
-                                { "assetItemID", currentCachedRequestParameters[0]},
-                                { "truckID", currentCachedRequestParameters[1]},
-                                { "license_plate", currentCachedRequestParameters[2]},
-                                { "make_model", currentCachedRequestParameters[3]},
-                                { "manufactureYear", currentCachedRequestParameters[4]},
-                                { "driverID", currentCachedRequestParameters[5]},
-                                { "acquisition_date", currentCachedRequestParameters[6]},
-                                { "manufactureDate", currentCachedRequestParameters[7]},
-                                { "dateEntered", currentCachedRequestParameters[8]},
-                                { "installationDate", currentCachedRequestParameters[9]}
+                                { "tagID", currentCachedRequestParameters[7]},
+                                { "truckID", currentCachedRequestParameters[0]},
+                                { "license_plate", currentCachedRequestParameters[1]},
+                                { "make_model", currentCachedRequestParameters[2]},
+                                { "manufactureYear", currentCachedRequestParameters[3]},
+                                { "driverID", currentCachedRequestParameters[4]},
+                                { "acquisition_date", currentCachedRequestParameters[5]},
+                                { "deployment_date", currentCachedRequestParameters[6]}
                             };
                             var content = new FormUrlEncodedContent(values);
 
                             var response = client.PostAsync("https://jjung2.w3.uvm.edu/RFIDproject/REST_API/api/write.php", content);
                             Console.WriteLine(response.ToString());
                         }
-                        else if (database_type == "Inspection")
+                        else if (database_type == "InspectionPost")
                         {
                             Console.WriteLine(s);
                             var values = new Dictionary<string, string>
                             {
                                 { "request", "inspection"},
-                                { "tagID", s.Split('^')[1].Split('|')[0]},
-                                { "inspectorName", s.Split('^')[1].Split('|')[1]},
-                                { "inspectionResult", s.Split('^')[1].Split('|')[2]}
+                                { "tagID", currentCachedRequestParameters[0]},
+                                { "inspectorName", currentCachedRequestParameters[1]},
+                                { "inspectionResult", currentCachedRequestParameters[2]},
                             };
                             var content = new FormUrlEncodedContent(values);
-
+                            Console.WriteLine("Parms");
+                            Console.WriteLine(currentCachedRequestParameters[0]);
+                            Console.WriteLine(currentCachedRequestParameters[1]);
+                            Console.WriteLine(currentCachedRequestParameters[2]);
                             var response = client.PostAsync("https://jjung2.w3.uvm.edu/RFIDproject/REST_API/api/write.php", content);
                             Console.WriteLine(response.ToString());
                         }
@@ -386,9 +386,9 @@ namespace ZebraRFIDApp.Pages.Inventory
                             var values = new Dictionary<string, string>
                             {
                                 { "request", "usage"},
-                                { "tagID", s.Split('^')[1].Split('|')[0]},
-                                { "user", s.Split('^')[1].Split('|')[1]},
-                                { "gpsAddress", s.Split('^')[1].Split('|')[2]}
+                                { "tagID", currentCachedRequestParameters[0]},
+                                { "user",currentCachedRequestParameters[1] },
+                                { "gpsAddress", currentCachedRequestParameters[2] }
                             };
                             var content = new FormUrlEncodedContent(values);
 
@@ -439,6 +439,8 @@ namespace ZebraRFIDApp.Pages.Inventory
                 DataFromDataBase dataList = JsonConvert.DeserializeObject<DataFromDataBase>(json);
                 List<string> data = new List<string>();
                 System.IO.File.WriteAllText(fileName, "");
+
+
                 // Create a file to write to.
                 downloaded_data = new List<List<string>>();
                 foreach (var item in dataList.data)
@@ -464,7 +466,7 @@ namespace ZebraRFIDApp.Pages.Inventory
                     using (StreamWriter sw = System.IO.File.AppendText(fileName))
                     {
 
-                        sw.WriteLine("Truck^" + item.truckID + '|' + item.license_plate + '|' + item.make_model + '|' + item.manufactureYear + '|'
+                        sw.WriteLine("TruckDown^" + item.truckID + '|' + item.license_plate + '|' + item.make_model + '|' + item.manufactureYear + '|'
                           + item.driverID + '|' + item.acquisition_date + '|' + item.deployment_date + '|' + item.tagID + '|' + item.manufactureDate + '|'
                           + item.dateEntered + '|' + item.installationDate + '|' + item.message);
                     }

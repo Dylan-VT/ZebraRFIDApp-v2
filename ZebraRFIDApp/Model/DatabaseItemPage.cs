@@ -73,7 +73,7 @@ namespace ZebraRFIDApp.Model
 		};
 
         List<string> cellLabelsInspection = new List<string>() {
-           "tag ID: ",
+           "Tag ID: ",
            "Inspector Name: ",
            "Result: "
         };
@@ -89,112 +89,94 @@ namespace ZebraRFIDApp.Model
             int index = -1;
             var text = File.ReadAllText(fileName);
 
-            for (int i = 0; i < downloaded_list.Count; i++)
-            {
-                for (int j = 0; j < downloaded_list[i].Count; j++)
-                {
-                    Console.Write(downloaded_list[i][j]);
-                    Console.Write(" | ");
-                }
-                Console.WriteLine();
-            }
             //create new TableSection
-            TableSection cells = new TableSection();
+            TableSection truckCells = new TableSection()
+            {
+                Title = "Truck"
+            };
+            TableSection inspectionCells = new TableSection()
+            {
+                Title = "Inspection"
+            };
 
             page = new TableView()
 			{
 				Intent = TableIntent.Form,
 				Root = new TableRoot
 				{
-					cells
+					truckCells,
+                    inspectionCells
 				}
 			};
             for (int i = 0; i < downloaded_list.Count; i++)
             {
                 Console.WriteLine(downloaded_list[i][tagIdIndex]);
+
                 if (tagID == downloaded_list[i][tagIdIndex])
                 {
                     index = i;
-                    break;
                 }
             }
 
-
+            
             if (index != -1) //item does exist
+            {
+                for (int i = 0; i < truckCellLabels.Count; i++)
+                {   //create new buttons for Table
+                        var itemField = new EntryCell()
+                        {
+                            Label = truckCellLabels[i],
+                            Text = downloaded_list[index][i + 1],
+
+                        };
+
+                        if  (i >= 7) //don't allow inputs for tagid and below
+                        {
+                            itemField.IsEnabled = false;
+                        }
+                        Console.WriteLine(downloaded_list[index][i + 1]);
+                        truckCells.Add(itemField);
+
+                }
+                //create inspection cells
+                
+                for (int i = 0; i < cellLabelsInspection.Count; ++i)
+                {   //create new buttons for Table
+                        var itemField = new EntryCell()
+                        {
+                            Label = cellLabelsInspection[i],
+                        };
+                        //if first item, we want to add the tag ID too
+                        if (i == 0)
+                        {
+                            itemField.Text = downloaded_list[index][tagIdIndex];
+                        };
+                        inspectionCells.Add(itemField);
+                }
+            }
+            else //item not downloaded
             {
                 for (int i = 0; i < truckCellLabels.Count; i++)
                 {   //create new buttons for Table
                     var itemField = new EntryCell()
                     {
                         Label = truckCellLabels[i],
-                        Text = downloaded_list[index][i + 1],
 
                     };
-                    Console.WriteLine(downloaded_list[index][i + 1]);
-                    cells.Add(itemField);
+                    truckCells.Add(itemField);
 
                 }
-
-                //create Inspection title cell
-                var inspectionHeader = new EntryCell()
-                {
-                    Label = "Inspection: "
-                };
-                cells.Add(inspectionHeader);
                 //create inspection cells
                 for (int i = 0; i < cellLabelsInspection.Count; ++i)
                 {   //create new buttons for Table
-                        var itemField = new EntryCell()
-                        {
-                            Label = cellLabelsInspection[i],
-                        };
-                        cells.Add(itemField);
+                    var itemField = new EntryCell()
+                    {
+                        Label = cellLabelsInspection[i],
+                    };
+                    inspectionCells.Add(itemField);
                 }
             }
-            else //item not downloaded
-            {
-                for (int i = 0; i < truckCellLabels.Count; ++i)
-                {   //create new buttons for Table
-                    if (i == 0)
-                    {
-                        var itemField = new EntryCell()
-                        {
-                            Label = truckCellLabels[i],
-                            Text = tagID,
-
-                        };
-                        cells.Add(itemField);
-                    }
-                    else
-                    {
-                        var itemField = new EntryCell()
-                        {
-                            Label = truckCellLabels[i],
-                        };
-                        cells.Add(itemField);
-                    }
-                }
-                for (int i = 0; i < cellLabelsInspection.Count; ++i)
-                {   //create new buttons for Table
-                    if (i == 0)
-                    {
-                        var itemField = new EntryCell()
-                        {
-                            Label = cellLabelsInspection[i],
-                            Text = (string)tagID,
-                        };
-                        cells.Add(itemField);
-                    }
-                    else
-                    {
-                        var itemField = new EntryCell()
-                        {
-                            Label = cellLabelsInspection[i],
-                        };
-                        cells.Add(itemField);
-                    }
-                }
-            } 
+         
 
 
 
@@ -207,29 +189,27 @@ namespace ZebraRFIDApp.Model
 				HorizontalOptions = LayoutOptions.CenterAndExpand,
 				TextColor = Color.Black,
 				BorderColor = Color.Blue,
-				BackgroundColor = Color.Gray,
+				BackgroundColor = Color.LightGray,
 				FontSize = 20,
-				Margin = new Thickness(5, 0)
             };
 
-            var submit2 = new Button()
+            var submitInspection = new Button()
             {
                 Text = "Submit Inspection",
                 VerticalOptions = LayoutOptions.CenterAndExpand,
                 HorizontalOptions = LayoutOptions.CenterAndExpand,
                 TextColor = Color.Black,
                 BorderColor = Color.Blue,
-                BackgroundColor = Color.Gray,
+                BackgroundColor = Color.LightGray,
                 FontSize = 20,
-                Margin = new Thickness(5, 0)
             };
 
-            //event handler for click
-            //TODO: 
+            //handle truck click event
             submitTruck.Clicked += async (sender, args) =>
 			{
                 List<string> temp_list = new List<string>();
-                foreach(EntryCell i in cells)
+                Console.WriteLine(DateTime.UtcNow.ToString());
+                foreach(EntryCell i in truckCells)
                 {
                     temp_list.Add(i.Text);
                 }
@@ -263,23 +243,51 @@ namespace ZebraRFIDApp.Model
                 }
                 using (StreamWriter sw = System.IO.File.AppendText(fileName))
                 {
-                    sw.WriteLine("MessageBoard^" + temp_list[0] + '|' + temp_list[1] + '|' + temp_list[2] + '|'
+                    Console.WriteLine(fileName);
+                    string truckRequest = "TruckPost^" + temp_list[0] + '|' + temp_list[1] + '|' + temp_list[2] + '|'
                     + temp_list[3] + '|' + temp_list[4] + '|' + temp_list[5] + '|' + temp_list[6] + '|' + temp_list[7] + '|' + temp_list[8] + '|' + temp_list[9] + '|'
-                    + temp_list[10] + '|' + temp_list[11]);
-                    sw.WriteLine("Usage^" + temp_list[0] + '|' + "Jay Hwasung Jung" + '|' + lat + "," + lon);
+                    + temp_list[10] + '|' + temp_list[11];
+                    sw.WriteLine(truckRequest);
+                    string usageRequest = "UsagePost^" + temp_list[7] + '|' + DateTime.UtcNow.ToString() + '|' + lat + "," + lon;
+                    sw.WriteLine(usageRequest);
                 }
-                DisplayAlert(ConstantsString.Msg, "MessageBoard saved", ConstantsString.MsgActionOk);
+                await DisplayAlert(ConstantsString.Msg, "Truck saved", ConstantsString.MsgActionOk);
+
+                text = File.ReadAllText(fileName);
+                Console.WriteLine(text);
+
+                //update downloaded_items to reflect this change
+                List<string> data = new List<string>();
+
+                data.Add("Truck");
+                foreach (string item in temp_list)
+                {
+                    data.Add(item.ToString());
+                }
+
+                downloaded_list.Add(data);
+
+                foreach (List<string> row in downloaded_list)
+                {
+                    foreach (string item in row)
+                    {
+                        Console.Write(item);
+                        Console.Write(" | ");
+                    }
+                    Console.WriteLine();
+                }
             };
-            submit2.Clicked += (sender, args) =>
+            //handle submit inspection press
+            submitInspection.Clicked += (sender, args) =>
             {   //new page with rdr 0
                 List<string> temp_list = new List<string>();
-                foreach (EntryCell i in cells)
+                foreach (EntryCell i in inspectionCells)
                 {
                     temp_list.Add(i.Text);
                 }
                 using (StreamWriter sw = System.IO.File.AppendText(fileName))
                 {
-                    sw.WriteLine("Inspection^" + temp_list[0] + '|' + temp_list[13] + "|" + temp_list[14]);
+                    sw.WriteLine("InspectionPost^" + temp_list[0] + '|' + temp_list[1] + "|" + temp_list[2]);
                 }
                 DisplayAlert(ConstantsString.Msg, "Inspection saved", ConstantsString.MsgActionOk);
             };
@@ -291,7 +299,7 @@ namespace ZebraRFIDApp.Model
 				{
                     page,
 					submitTruck,
-                    submit2
+                    submitInspection
 				}
 			};
 			

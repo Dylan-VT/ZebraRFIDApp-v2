@@ -141,7 +141,7 @@
                         Grid.Row="0"
                         x:Name = "btnInventory"
                         BackgroundColor="#00ff001C"
-                        Text="START"
+                        Text="Start"
                         TextColor="#3d8bff"
                         WidthRequest="300"                  
                         HorizontalOptions="Center"
@@ -156,6 +156,16 @@
                         WidthRequest="300"                  
                         HorizontalOptions="Center"
                         Clicked="OnButtonClickedDownload" />
+            <Button
+                        Grid.Column="0"
+                        Grid.Row="0"
+                        x:Name = "btnSync"
+                        BackgroundColor="#00ff001C"
+                        Text="Sync"
+                        TextColor="#3d8bff"
+                        WidthRequest="300"                  
+                        HorizontalOptions="Center"
+                        Clicked="OnButtonClickedSync" />
         </StackLayout>
            
          

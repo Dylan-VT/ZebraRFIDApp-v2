@@ -34,7 +34,7 @@ namespace ZebraRFIDApp.Pages.About
             lbSdkVersion.Text = ConstantsString.SDKVersion + SdkHandler.GetInstance().Version;
 #endif
             lbAppVersion.Text = ConstantsString.ApplicationVersion + AppInfo.VersionString;
-            lbCopyright.Text = ConstantsString.CopyrightMsg;
+            lbCopyright.Text = "Produced at the University of Vermont by modfying source code from Zebra.";
         }
     }
 }
