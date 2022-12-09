@@ -116,7 +116,8 @@ namespace ZebraRFIDApp.Pages.Inventory
         {
             TagDataModel testTag = new TagDataModel();
             testTag.tagID = "56414F54000000000000000000000005";
-            tagDataList.Add(testTag);
+            //toggle line below to add test tags
+            //tagDataList.Add(testTag);
 
             reverseTagDataList = new List<TagDataModel>(tagDataList);
             lstTagData.ItemsSource = reverseTagDataList;
@@ -388,7 +389,8 @@ namespace ZebraRFIDApp.Pages.Inventory
                                 { "request", "usage"},
                                 { "tagID", currentCachedRequestParameters[0]},
                                 { "user",currentCachedRequestParameters[1] },
-                                { "gpsAddress", currentCachedRequestParameters[2] }
+                                { "gpsAddress", currentCachedRequestParameters[2] },
+                                { "status_IN_OR_OUT", "handheld" }
                             };
                             var content = new FormUrlEncodedContent(values);
 
