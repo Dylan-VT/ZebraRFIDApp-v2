@@ -53,6 +53,7 @@ namespace ZebraRFIDApp.Pages.Inventory
             public string installationDate { get; set; }
             public string message { get; set; }
 
+
         }
         public InventoryPage()
         {
@@ -80,7 +81,6 @@ namespace ZebraRFIDApp.Pages.Inventory
         protected override void OnAppearing()
         {
             base.OnAppearing();
-
             lbHeaderDetail.HeightRequest = ConstantsString.HeaderDefaultHeight;
 
             Globals.InvetoryViewAppeared = true;
@@ -115,7 +115,7 @@ namespace ZebraRFIDApp.Pages.Inventory
         void UpdateUI()
         {
             TagDataModel testTag = new TagDataModel();
-            testTag.tagID = "56414F54000000000000000000000005";
+            testTag.tagID = "56414F54000000000000000000000007";
             //toggle line below to add test tags
             //tagDataList.Add(testTag);
 
@@ -323,16 +323,19 @@ namespace ZebraRFIDApp.Pages.Inventory
                     string s;
                     while ((s = sr.ReadLine()) != null)
                     {
-                        string[] currentCachedRequest = s.Split('^');
-                        string[] currentCachedRequestParameters = currentCachedRequest[1].Split('|');
-                        database_type = currentCachedRequest[0];
-
-                        Console.WriteLine(s);
-
-                        if (database_type == "TruckPost")
+                        if (s.Length != 0)
                         {
+                            Console.WriteLine(s);
+                            string[] currentCachedRequest = s.Split('^');
+                            string[] currentCachedRequestParameters = currentCachedRequest[1].Split('|');
+                            database_type = currentCachedRequest[0];
 
-                            var values = new Dictionary<string, string>
+                            
+
+                            if (database_type == "TruckPost")
+                            {
+
+                                var values = new Dictionary<string, string>
                             {
                             /* 
                             data.Add("MessageBoard");
@@ -359,43 +362,47 @@ namespace ZebraRFIDApp.Pages.Inventory
                                 { "acquisition_date", currentCachedRequestParameters[5]},
                                 { "deployment_date", currentCachedRequestParameters[6]}
                             };
-                            var content = new FormUrlEncodedContent(values);
+                                var content = new FormUrlEncodedContent(values);
 
-                            var response = client.PostAsync("https://jjung2.w3.uvm.edu/RFIDproject/REST_API/api/write.php", content);
-                            Console.WriteLine(response.ToString());
-                        }
-                        else if (database_type == "InspectionPost")
-                        {
-                            Console.WriteLine(s);
-                            var values = new Dictionary<string, string>
+                                var response = client.PostAsync("https://jjung2.w3.uvm.edu/RFIDproject/REST_API/api/write.php", content);
+                                Console.WriteLine(response.ToString());
+                            }
+                            else if (database_type == "InspectionPost")
+                            {
+                                Console.WriteLine(s);
+                                var values = new Dictionary<string, string>
                             {
                                 { "request", "inspection"},
                                 { "tagID", currentCachedRequestParameters[0]},
                                 { "inspectorName", currentCachedRequestParameters[1]},
                                 { "inspectionResult", currentCachedRequestParameters[2]},
                             };
-                            var content = new FormUrlEncodedContent(values);
-                            Console.WriteLine("Parms");
-                            Console.WriteLine(currentCachedRequestParameters[0]);
-                            Console.WriteLine(currentCachedRequestParameters[1]);
-                            Console.WriteLine(currentCachedRequestParameters[2]);
-                            var response = client.PostAsync("https://jjung2.w3.uvm.edu/RFIDproject/REST_API/api/write.php", content);
-                            Console.WriteLine(response.ToString());
-                        }
-                        else if (database_type == "Usage")
-                        {
-                            var values = new Dictionary<string, string>
+                                var content = new FormUrlEncodedContent(values);
+                                Console.WriteLine("Parms");
+                                Console.WriteLine(currentCachedRequestParameters[0]);
+                                Console.WriteLine(currentCachedRequestParameters[1]);
+                                Console.WriteLine(currentCachedRequestParameters[2]);
+                                var response = client.PostAsync("https://jjung2.w3.uvm.edu/RFIDproject/REST_API/api/write.php", content);
+                                Console.WriteLine(response.ToString());
+                            }
+                            else if (database_type == "UsagePost")
+                            {
+                                var values = new Dictionary<string, string>
                             {
                                 { "request", "usage"},
                                 { "tagID", currentCachedRequestParameters[0]},
-                                { "user",currentCachedRequestParameters[1] },
+                                { "usageDate",currentCachedRequestParameters[1] },
                                 { "gpsAddress", currentCachedRequestParameters[2] },
                                 { "status_IN_OR_OUT", "handheld" }
                             };
-                            var content = new FormUrlEncodedContent(values);
-
-                            var response = client.PostAsync("https://jjung2.w3.uvm.edu/RFIDproject/REST_API/api/write.php", content);
-                            Console.WriteLine(response.ToString());
+                                var content = new FormUrlEncodedContent(values);
+                                Console.WriteLine("Parms");
+                                Console.WriteLine(currentCachedRequestParameters[0]);
+                                Console.WriteLine(currentCachedRequestParameters[1]);
+                                Console.WriteLine(currentCachedRequestParameters[2]);
+                                var response = client.PostAsync("https://jjung2.w3.uvm.edu/RFIDproject/REST_API/api/write.php", content);
+                                Console.WriteLine(response.ToString());
+                            }
                         }
 
                     }

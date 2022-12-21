@@ -12,10 +12,12 @@ using System.Net.Http;
 using System.Net.NetworkInformation;
 using static CoreFoundation.DispatchSource;
 using System.IO;
+using System.Text.Json;
+using Newtonsoft.Json;
+using Xamarin.Forms.Shapes;
 using System.Threading;
 using System.Threading.Tasks;
 using Xamarin.Essentials;
-using System.Security.Policy;
 /// <summary>
 /// This page is called when you click on an item in the Database menu. It will be used to display the item about that specific asset, as well as feature the ability to modify it
 /// </summary>
@@ -158,22 +160,44 @@ namespace ZebraRFIDApp.Model
             {
                 for (int i = 0; i < truckCellLabels.Count; i++)
                 {   //create new buttons for Table
-                    var itemField = new EntryCell()
+                    if (i == 0) { 
+                        var itemField = new EntryCell()
+                        {
+                            Label = truckCellLabels[i],
+                            Text = tagID
+                        };
+                        truckCells.Add(itemField);
+                    }
+                    else
                     {
-                        Label = truckCellLabels[i],
+                        var itemField = new EntryCell()
+                        {
+                            Label = truckCellLabels[i],
 
-                    };
-                    truckCells.Add(itemField);
-
+                        };
+                        truckCells.Add(itemField);
+                    }
                 }
                 //create inspection cells
                 for (int i = 0; i < cellLabelsInspection.Count; ++i)
                 {   //create new buttons for Table
-                    var itemField = new EntryCell()
+                    if (i == 0)
                     {
-                        Label = cellLabelsInspection[i],
-                    };
-                    inspectionCells.Add(itemField);
+                        var itemField = new EntryCell()
+                        {
+                            Label = cellLabelsInspection[i],
+                            Text = tagID
+                        };
+                        inspectionCells.Add(itemField);
+                    }
+                    else
+                    {
+                        var itemField = new EntryCell()
+                        {
+                            Label = cellLabelsInspection[i],
+                        };
+                        inspectionCells.Add(itemField);
+                    }
                 }
             }
          
@@ -223,6 +247,7 @@ namespace ZebraRFIDApp.Model
                     {
                         lat = location.Latitude.ToString();
                         lon = location.Longitude.ToString();
+                        Console.WriteLine(lat);
                     }
                 }
                 catch (FeatureNotSupportedException fnsEx)
@@ -248,25 +273,23 @@ namespace ZebraRFIDApp.Model
                     + temp_list[3] + '|' + temp_list[4] + '|' + temp_list[5] + '|' + temp_list[6] + '|' + temp_list[7] + '|' + temp_list[8] + '|' + temp_list[9] + '|'
                     + temp_list[10] + '|' + temp_list[11];
                     sw.WriteLine(truckRequest);
-                    string usageRequest = "UsagePost^" + temp_list[7] + '|' + DateTime.UtcNow.ToString() + '|' + lat + "," + lon;
+                    string usageRequest = "UsagePost^" + temp_list[7] + '|' + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + '|' + lat + "," + lon;
                     sw.WriteLine(usageRequest);
                 }
                 await DisplayAlert(ConstantsString.Msg, "Truck saved", ConstantsString.MsgActionOk);
-
                 text = File.ReadAllText(fileName);
                 Console.WriteLine(text);
-
                 //update downloaded_items to reflect this change
                 List<string> data = new List<string>();
-
                 data.Add("Truck");
                 foreach (string item in temp_list)
                 {
+                    Console.WriteLine(item);
                     data.Add(item.ToString());
                 }
-
+                Console.WriteLine(1);
                 downloaded_list.Add(data);
-
+                Console.WriteLine(1);
                 foreach (List<string> row in downloaded_list)
                 {
                     foreach (string item in row)

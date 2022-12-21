@@ -11,7 +11,7 @@
     <OutputType>Exe</OutputType>
     <RootNamespace>ZebraRFIDApp.iOS</RootNamespace>
     <IPhoneResourcePrefix>Resources</IPhoneResourcePrefix>
-    <AssemblyName>2VRJN5ZGG6.com.uvmrfid</AssemblyName>
+    <AssemblyName>2VRJN5ZGG6.uvm.rfid</AssemblyName>
     <MtouchEnableSGenConc>true</MtouchEnableSGenConc>
     <MtouchHttpClientHandler>NSUrlSessionHandler</MtouchHttpClientHandler>
     <ReleaseVersion>1.0.10</ReleaseVersion>
@@ -28,8 +28,8 @@
     <MtouchArch>x86_64</MtouchArch>
     <MtouchLink>SdkOnly</MtouchLink>
     <MtouchDebug>true</MtouchDebug>
-    <CodesignKey>Apple Development: Created via API (JUZ2YG2N3A)</CodesignKey>
-    <CodesignProvision>VS: WildCard Development</CodesignProvision>
+    <CodesignKey>Apple Development: Created via API (T9DL556XSM)</CodesignKey>
+    <CodesignProvision>final</CodesignProvision>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhoneSimulator' ">
     <DebugType>none</DebugType>
@@ -39,8 +39,8 @@
     <WarningLevel>4</WarningLevel>
     <MtouchLink>SdkOnly</MtouchLink>
     <MtouchArch>x86_64</MtouchArch>
-    <CodesignKey>Apple Development: Created via API (JUZ2YG2N3A)</CodesignKey>
-    <CodesignProvision>VS: WildCard Development</CodesignProvision>
+    <CodesignKey>Apple Development: Created via API (T9DL556XSM)</CodesignKey>
+    <CodesignProvision>final</CodesignProvision>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|iPhone' ">
     <DebugSymbols>true</DebugSymbols>
@@ -51,14 +51,15 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <MtouchArch>ARM64</MtouchArch>
-    <CodesignKey>Apple Development: Created via API (JUZ2YG2N3A)</CodesignKey>
+    <CodesignKey>Apple Development: Created via API (T9DL556XSM)</CodesignKey>
     <MtouchDebug>true</MtouchDebug>
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
     <MtouchLink>SdkOnly</MtouchLink>
     <MtouchSdkVersion>14.1</MtouchSdkVersion>
-    <CodesignProvision>VS: WildCard Development</CodesignProvision>
+    <CodesignProvision>final</CodesignProvision>
     <BuildIpa>true</BuildIpa>
-    <IpaPackageName>2VRJN5ZGG6.com.uvmrfid.app</IpaPackageName>
+    <IpaPackageName>2VRJN5ZGG6.uvm.rfid.app</IpaPackageName>
+    <AssemblyName>35TBBHTQ3F.uvm.rfid</AssemblyName>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhone' ">
     <DebugType>none</DebugType>

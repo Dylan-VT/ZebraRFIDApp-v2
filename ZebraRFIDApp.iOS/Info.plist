@@ -20,7 +20,7 @@
 	<key>MinimumOSVersion</key>
 	<string>8.0</string>
 	<key>CFBundleDisplayName</key>
-	<string>ZebraRFIDApp</string>
+	<string>rfid</string>
 	<key>CFBundleIdentifier</key>
 	<string>uvm.rfid</string>
 	<key>CFBundleVersion</key>
@@ -45,5 +45,7 @@
 	<string>1.0.11</string>
 	<key>NSBluetoothAlwaysUsageDescription</key>
 	<string>Bluetooth is used to discover, connect and communicate with nearby devices.</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+<string>Fill in a reason why your app needs access to location.</string>
 </dict>
 </plist>
